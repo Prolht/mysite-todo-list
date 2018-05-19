@@ -26,7 +26,7 @@ a:hover {
 
 html,
 body {
-	background-image: url("E:/Codes/pycharmprojects/mysite/static/images/main_page/main_page.png");
+	background-image: url("/static/images/main_page/main_page.png");
     background-size: 100%;  
     background-repeat: no-repeat;  
 	/*
@@ -55,7 +55,7 @@ body {
   vertical-align: top;
 }
 .cover-container {
-  margin-right: auto;
+  margin-right: 5%;
   margin-left: auto;
 }
 
@@ -68,10 +68,9 @@ body {
 /*
  * Header
  */
-.masthead-brand {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  color: rgba(8,13,248,.75);
+.logo_img{
+  margin-right: 80%;
+  margin-top: 40px;
 }
 
 .masthead-nav > li {
@@ -117,11 +116,12 @@ body {
  */
 
 .cover {
-  padding-top: 120px;
-  padding: 30 500px;
+  padding-top: 80px;
+  font-size: 30px;
+  padding: 30 200px;
 }
 .cover .btn-lg {
-  padding: 10px 20px;
+  padding: 10px 10px;
   font-weight: bold;
 }
 
@@ -132,7 +132,7 @@ body {
 
 .mastfoot {
   color: #999; /* IE8 proofing */
-  color: rgba(255,255,255,.5);
+  color: rgb(255, 253, 10);
 }
 
 

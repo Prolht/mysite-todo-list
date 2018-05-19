@@ -4,7 +4,7 @@ from django.shortcuts import HttpResponse
 # Create your views here.
 
 def index(request):
-    pass
+    return render(request, 'app/index.html')
 
 def login(request):
     if request.method == "POST":
