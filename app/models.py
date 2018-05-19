@@ -2,7 +2,6 @@ from django.db import models
 
 # Create your models here.
 class UserInfo(models.Model):
-    UserId = models.IntegerField()
     email = models.CharField(max_length=200)
     UserName = models.CharField(max_length=32)
     pwd = models.CharField(max_length=32)
