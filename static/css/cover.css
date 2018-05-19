@@ -26,7 +26,7 @@ a:hover {
 
 html,
 body {
-	background-image: url("/static/images/main_page/main_page.png");
+	background-image: url("/static/images/main_page/main_page.jpeg");
     background-size: 100%;  
     background-repeat: no-repeat;  
 	/*
@@ -69,8 +69,8 @@ body {
  * Header
  */
 .logo_img{
-  margin-right: 80%;
-  margin-top: 40px;
+  margin-right: 83%;
+  margin-top: 3%;
 }
 
 .masthead-nav > li {
@@ -86,7 +86,7 @@ body {
   font-weight: bold;
   color: #fff; /* IE8 proofing */
   color: rgba(255,255,255,.75);
-  border-bottom: 2px solid transparent;
+  border-bottom: 0px solid transparent;
 }
 .masthead-nav > li > a:hover,
 .masthead-nav > li > a:focus {

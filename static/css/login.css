@@ -1,14 +1,17 @@
 @charset "utf-8";
 /* CSS Document */
     body {  
-        background-image: url("/static/images/login/login.jpg");;
+        background-image: url("/static/images/main_page/main_page.jpeg");;
         background-size: 100%;  
         background-repeat: no-repeat;  
     }  
-      
-    #login_frame {  
-        width: 400px;  
-        height: 260px;  
+    .logo_img{
+         margin-left: 6%;
+         margin-top: 2%;
+    }
+    #login_frame {
+        width: 450px;
+        height: 300px;
         padding: 13px;  
       
         position: absolute;  
@@ -26,19 +29,20 @@
     form p > * {  
         display: inline-block;  
         vertical-align: middle;  
-    }  
-      
+    }
+
+
     #image_logo {  
-        margin-top: 12px;
+        margin-top: 3px;
     }  
       
     .label_input {  
-        font-size: 14px;  
+        font-size: 17px;
         font-family: 宋体;  
       
-        width: 65px;  
-        height: 28px;  
-        line-height: 28px;  
+        width: 70px;
+        height: 40px;
+        line-height: 40px;
         text-align: center;  
       
         color: white;  
@@ -48,20 +52,20 @@
     }  
       
     .text_field {  
-        width: 278px;  
-        height: 28px;  
+        width: 200px;
+        height: 39px;
         border-top-right-radius: 5px;  
         border-bottom-right-radius: 5px;  
         border: 0;  
     }  
       
     #btn_login {  
-        font-size: 14px;  
+        font-size: 17px;
         font-family: 宋体;  
-      
-        width: 120px;  
-        height: 28px;  
-        line-height: 28px;  
+        padding-left: 20px;
+        width: 150px;
+        height: 40px;
+        line-height: 31px;
         text-align: center;  
       
         color: white;  
@@ -69,16 +73,16 @@
         border-radius: 6px;  
         border: 0;  
       
-        float: left;  
+        float: center;
     }  
       
     #forget_pwd {  
-        font-size: 12px;  
-        color: white;  
+        font-size: 16px;
+        color: rgb(9, 9, 9);
         text-decoration: none;  
         position: relative;  
         float: right;  
-        top: 5px;  
+        top: 16px;
       
     }  
       
