@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="E:/Codes/pycharmprojects/mysite/static/images/favicon.ico">
+
+    <title>To-Do-List</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="E:/Codes/pycharmprojects/mysite/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="E:/Codes/pycharmprojects/mysite/static/css/offcanvas.css" rel="stylesheet">
+  </head>
+
+  <body class="bg-light">
+
+    <nav class="navbar navbar-expand-md fixed-top navbar-blue bg-dark">
+      <a class="navbar-brand" href="#">To-Do</a>
+      <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">主页 <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">关于</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">联系&反馈</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">切换账户</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">设置</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#">暂未开放</a>
+              <!--<a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+				-->
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="查找" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">查找</button>
+        </form>
+      </div>
+    </nav>
+
+    <div class="nav-scroller bg-white box-shadow">
+      <nav class="nav nav-underline">
+        <a class="nav-link active" href="#">To</a>
+        <a class="nav-link" href="#">重要且紧急</a>
+        <a class="nav-link" href="#">重要但不紧急</a>
+        <a class="nav-link" href="#">不重要但紧急</a>
+        <a class="nav-link" href="#">不重要也不紧急</a>
+      </nav>
+    </div>
+
+    <main role="main" class="container">
+      <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow">
+        <img class="mr-3" src="E:/Codes/pycharmprojects/mysite/static/images/main_page/foot.png" alt="" width="48" height="48">
+        <div class="lh-100">
+          <h6 class="mb-0 text-white lh-100">To-Do-List</h6>
+          <small>&copy;2018</small>
+        </div>
+      </div>
+
+      <div class="my-3 p-3 bg-white rounded box-shadow">
+        <h6 class="border-bottom border-gray pb-2 mb-0">最近添加</h6>
+        <div class="media text-muted pt-3">
+          <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">@日期</strong>
+			  <br>
+            要做的事情。。。。。。。。。。。。。。
+          </p>
+        </div>
+        <div class="media text-muted pt-3">
+          <img data-src="holder.js/32x32?theme=thumb&bg=e83e8c&fg=e83e8c&size=1" alt="" class="mr-2 rounded">
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">@日期</strong>
+            <br>
+            要做的事情。。。。。。。。。。。。。。
+          </p>
+        </div>
+        <div class="media text-muted pt-3">
+          <img data-src="holder.js/32x32?theme=thumb&bg=6f42c1&fg=6f42c1&size=1" alt="" class="mr-2 rounded">
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">@日期</strong>
+            <br>
+            要做的事情。。。。。。。。。。。。。。
+          </p>
+        </div>
+        <small class="d-block text-right mt-3">
+          <a href="#">全部</a>
+        </small>
+      </div>
+
+		<!--
+      <div class="my-3 p-3 bg-white rounded box-shadow">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
+        <div class="media text-muted pt-3">
+          <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
+          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <div class="d-flex justify-content-between align-items-center w-100">
+              <strong class="text-gray-dark">Full Name</strong>
+              <a href="#">Follow</a>
+            </div>
+            <span class="d-block">@username</span>
+          </div>
+        </div>
+        <div class="media text-muted pt-3">
+          <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
+          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <div class="d-flex justify-content-between align-items-center w-100">
+              <strong class="text-gray-dark">Full Name</strong>
+              <a href="#">Follow</a>
+            </div>
+            <span class="d-block">@username</span>
+          </div>
+        </div>
+        <div class="media text-muted pt-3">
+          <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
+          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <div class="d-flex justify-content-between align-items-center w-100">
+              <strong class="text-gray-dark">Full Name</strong>
+              <a href="#">Follow</a>
+            </div>
+            <span class="d-block">@username</span>
+          </div>
+        </div>
+        <small class="d-block text-right mt-3">
+          <a href="#">All suggestions</a>
+        </small>
+      </div>
+		-->
+    </main>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="E:/Codes/pycharmprojects/mysite/static/js/jquery-slim.min.js"><\/script>')</script>
+    <script src="E:/Codes/pycharmprojects/mysite/static/js/popper.min.js"></script>
+    <script src="E:/Codes/pycharmprojects/mysite/static/js/bootstrap.min.js"></script>
+    <script src="E:/Codes/pycharmprojects/mysite/static/js/holder.min.js"></script>
+    <script src="E:/Codes/pycharmprojects/mysite/static/js/offcanvas.js"></script>
+  </body>
+</html>

@@ -93,4 +93,9 @@
       
     #login_control {  
         padding: 0 28px;  
-    }  
+    }
+
+    .mastfoot {
+         color: #999; /* IE8 proofing */
+        color: rgb(255, 253, 10);
+    }
