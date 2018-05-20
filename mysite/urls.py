@@ -23,5 +23,6 @@ urlpatterns = [
     path('login/', views.login),
     path('index/',views.index),
     path('main/',views.main),
+    path('register/',views.register),
     path('r^testdb$',testdb.testdb)
 ]

@@ -1,23 +1,119 @@
 <!doctype html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>登陆到To-Do-List</title>
-	<link rel="stylesheet" type="text/css" href="/static/css/login.css"/>
-	<script type="text/javascript" src="/static/js/login.js"></script>
-</head>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
 
-<body>
-	<div id="login_frame">
-	<p id="image_logo"><img src="/static/images/login/logo.png"></p>
-	<form method="post" action="login.js">
-		<p><label class="label_input">用户名</label><input type="text"class="text_field"/></p>
-		<p><label class="label_input">密码</label><input type="text" id="password"class="text_field"/></p>
-		<div id="login_control">
-		<input type="button"id="btn_login" value="登陆" onClick="login();"/>
-		<a id="forget_pwd" href="forget_pwd.html">忘记密码？</a>
-		</div>
-		</form>
-	</div>
-</body>
+    <title>注册</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/register.css" rel="stylesheet">
+  </head>
+
+  <body class="bg-light">
+
+    <div class="container">
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h2>欢迎注册To-Do-List</h2>
+        <p class="lead">永远相信美好的事情即将发生</p>
+      </div>
+
+      <div class="row">
+        </div>
+        <div class="col-md-8 order-md-1">
+          <h4 class="mb-3">To Be a To-Do-Lister</h4>
+          <form class="needs-validation" novalidate>
+
+            <div class="mb-3">
+              <label for="username">用户名*<span class="text-muted">（汉字、字母、数字都可）</span></label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="text" class="form-control" id="username" placeholder="用户名" required>
+                <div class="invalid-feedback" style="width: 100%;">
+                  请填写用户名！
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3" id="email">
+              <label for="email">邮箱 <span class="text-muted">*</span></label>
+              <input type="email" class="form-control" id="email" placeholder="example@example.com">
+              <div class="invalid-feedback">
+                邮箱无效！
+              </div>
+            </div>
+
+            <div class="mb-3" id="password1">
+              <label for="address">密码*<span class="text-muted">（最低位数为6位）</span></label>
+              <input type="password" class="form-control" id="address" placeholder="O(∩_∩)O" required>
+              <div class="invalid-feedback">
+                请输入密码
+              </div>
+            </div>
+
+             <div class="mb-3" id="password2">
+              <label for="address">请再次输入密码*<span class="text-muted">（最低位数为6位）</span></label>
+              <input type="password" class="form-control" id="address" placeholder="(●ˇ∀ˇ●)" required>
+              <div class="invalid-feedback">
+                密码不能为空
+              </div>
+            </div>
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit" onclick="register()
+">注册</button>
+          </form>
+        </div>
+      </div>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; Lex-Lht</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">反馈</a></li>
+          <li class="list-inline-item"><a href="#">建议</a></li>
+          <li class="list-inline-item"><a href="#">联系我</a></li>
+        </ul>
+      </footer>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="/static/js/jquery-slim.min.js"><\/script>')</script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/register.js"></script>
+    <script src="/static/js/holder.min.js"></script>
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
+  </body>
 </html>

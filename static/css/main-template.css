@@ -42,13 +42,13 @@ body {
  border-radius: 5px;
 }
 .main-todo {
- 	border-right:1px solid #d9d9d9
+ 	border-right:2px solid #d9d9d9
 }
 .main-analysis {
- 	border-left:1px solid #d9d9d9
+ 	border-left:2px solid #d9d9d9
 }
-.main-analysis {
- 	border-left:1px solid #d9d9d9
+.main-memo {
+ 	border-left:2px solid #d9d9d9
 }
 
 
