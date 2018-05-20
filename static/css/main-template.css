@@ -1,0 +1,99 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  	padding-top: 5rem;
+	background-image: url("../images/main_page/main_page.jpeg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	margin-bottom: 120px;
+}
+.collapse{
+    color: #000;
+}
+.content{
+	height: 100%;
+}
+.main-todo {
+ 
+ width:50%;
+ height:100%;
+ float:left;
+ padding-top:50px;
+ background-color: rgba(240, 255, 255, 0.6);  
+ border-radius: 5px;
+}
+.main-analysis {
+ width:50%;
+ height:50%;
+ float:right;
+ padding-top:10px;
+ background-color: rgba(240, 255, 255, 0.6);  
+ border-radius: 5px;
+}
+.main-memo {
+ margin-left: 50%;
+ width:50%;
+ height:50%;
+ float:left;
+ padding-top:10px;
+ background-color: rgba(240, 255, 255, 0.6);  
+ border-radius: 5px;
+}
+.main-todo {
+ 	border-right:1px solid #d9d9d9
+}
+.main-analysis {
+ 	border-left:1px solid #d9d9d9
+}
+.main-analysis {
+ 	border-left:1px solid #d9d9d9
+}
+
+
+.main-analysis,.main-memo {
+ border-top:1px solid #d9d9d9;
+ margin-top:5px
+}
+.rank-line {
+ padding:10px 0 10px 10px;
+ font-size:16px;
+ cursor:pointer
+}
+.main-todo.rank-line {
+ background-color:#FFEDE7;
+ color:#F76333
+}
+.main-analysis.rank-line {
+ background-color:#FFEFCB;
+ color:#FEAE6A
+}
+.main-memo.rank-line {
+ background-color:#D6F4FE;
+ color:#3FB6DA
+}
+
+
+
+.footer > .container {
+  padding-right: 15%;
+  padding-left: 15%;
+}
+
+code {
+  font-size: 80%;
+}
+
+.footer {
+  position: absolute;
+  background-color: rgba(240, 255, 255, 0.6);  
+  border-radius: 5px;  
+  bottom: 5px;
+  width: 40%;
+  right: 10%;
+  /* Set the fixed height of the footer here */
+  height: 20px;
+  line-height: 20px; /* Vertically center the text there */
+}
+

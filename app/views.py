@@ -12,4 +12,6 @@ def login(request):
         password = request.POST.get("password",None)
         print(username,password)
     return render(request, 'app/login.html')
+def main(request):
+    return render(request,'app/main2.html')
 
