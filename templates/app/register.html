@@ -17,13 +17,12 @@
   </head>
 
   <body class="bg-light">
-
-    <div class="container">
-      <div class="py-5 text-center">
+    <div class="py-5 text-center">
         <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
         <h2>欢迎注册To-Do-List</h2>
         <p class="lead">永远相信美好的事情即将发生</p>
       </div>
+    <div class="container">
 
       <div class="row">
         </div>
@@ -52,24 +51,23 @@
               </div>
             </div>
 
-            <div class="mb-3" id="password1">
-              <label for="address">密码*<span class="text-muted">（最低位数为6位）</span></label>
-              <input type="password" class="form-control" id="address" placeholder="O(∩_∩)O" required>
+            <div class="mb-3">
+              <label for="password">密码*<span class="text-muted">（最低位数为6位）</span></label>
+              <input type="password" class="form-control" id="password1" placeholder="O(∩_∩)O" required>
               <div class="invalid-feedback">
                 请输入密码
               </div>
             </div>
 
-             <div class="mb-3" id="password2">
-              <label for="address">请再次输入密码*<span class="text-muted">（最低位数为6位）</span></label>
-              <input type="password" class="form-control" id="address" placeholder="(●ˇ∀ˇ●)" required>
+             <div class="mb-3">
+              <label for="password">请再次输入密码*<span class="text-muted">（最低位数为6位）</span></label>
+              <input type="password" class="form-control" id="password2" placeholder="(●ˇ∀ˇ●)" required>
               <div class="invalid-feedback">
-                密码不能为空
+                密码长度不能少于6个字符
               </div>
             </div>
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit" onclick="register()
-">注册</button>
+            <button class="btn btn-primary btn-lg btn-block" type="submit" onclick="register()">注册</button>
           </form>
         </div>
       </div>
@@ -101,13 +99,14 @@
         window.addEventListener('load', function() {
           // Fetch all the forms we want to apply custom Bootstrap validation styles to
           var forms = document.getElementsByClassName('needs-validation');
-
+          var password1 = document.getElementById("password1");
+          var password2 = document.getElementById("password2");
           // Loop over them and prevent submission
           var validation = Array.prototype.filter.call(forms, function(form) {
             form.addEventListener('submit', function(event) {
               if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
+                  event.preventDefault();
+                  event.stopPropagation();
               }
               form.classList.add('was-validated');
             }, false);

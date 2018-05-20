@@ -3,24 +3,36 @@ html {
   min-height: 100%;
 }
 body {
-  	padding-top: 5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 1000px;
+  	padding-top: 4rem;
 	background-image: url("../images/main_page/main_page.jpeg");
-	background-size: 100%;
+	background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
 	background-repeat: no-repeat;
-	margin-bottom: 120px;
+    background-position: center 0;
+	margin-bottom: 10px;
+    zoom: 1;
 }
 .collapse{
     color: #000;
 }
 .content{
-	height: 100%;
+	height: 90%;
+    width: 90%;
+
 }
 .main-todo {
- 
+ margin-bottom: 10px 50% 10px 10%;
  width:50%;
  height:100%;
  float:left;
- padding-top:50px;
+ padding:3% 10px 0px ;
  background-color: rgba(240, 255, 255, 0.6);  
  border-radius: 5px;
 }
@@ -42,13 +54,16 @@ body {
  border-radius: 5px;
 }
 .main-todo {
- 	border-right:2px solid #d9d9d9
+    border-left:2px solid #d9d9d9;
+ 	border-right:2px solid #d9d9d9;
 }
 .main-analysis {
- 	border-left:2px solid #d9d9d9
+ 	border-left:2px solid #d9d9d9;
+    border-right:2px solid #d9d9d9;
 }
 .main-memo {
- 	border-left:2px solid #d9d9d9
+ 	border-left:2px solid #d9d9d9;
+    border-right:2px solid #d9d9d9;
 }
 
 
