@@ -22,78 +22,102 @@ body {
 .collapse{
     color: #000;
 }
+
+#main {
+    padding-right:0;
+    margin-left:10%;
+    height:100%!important;
+    padding-left:0
+}
 .content{
 	height: 90%;
-    width: 90%;
+    width: 100%;
+    overflow-y:hidden
 
 }
+
 .main-todo {
- margin-bottom: 10px 50% 10px 10%;
- width:50%;
- height:100%;
- float:left;
- padding:3% 10px 0px ;
- background-color: rgba(240, 255, 255, 0.6);  
- border-radius: 5px;
+    width:48%;
+    height:100%;
+    float:left;
+    background-color: rgba(240, 255, 255, 0.7);
+    border-radius: 5px;
 }
 .main-analysis {
- width:50%;
- height:50%;
- float:right;
- padding-top:10px;
- background-color: rgba(240, 255, 255, 0.6);  
- border-radius: 5px;
+    margin-right: 2%;
+    width:48%;
+    height:50%;
+    float:right;
+    background-color: rgba(240, 255, 255, 0.7);
+    border-radius: 5px;
 }
 .main-memo {
- margin-left: 50%;
- width:50%;
- height:50%;
- float:left;
- padding-top:10px;
- background-color: rgba(240, 255, 255, 0.6);  
- border-radius: 5px;
+    margin-right: 2%;
+    width:48%;
+    height:49%;
+    float:right;
+    background-color: rgba(240, 255, 255, 0.7 );
+    border-radius: 5px;
 }
 .main-todo {
-    border-left:2px solid #d9d9d9;
- 	border-right:2px solid #d9d9d9;
+    border-bottom: 2px solid #fffd0a;
+ 	border-left:2px solid #fffd0a;
+    border-right:2px solid #fffd0a;
+    border-top: 2px solid #fffd0a;
 }
 .main-analysis {
- 	border-left:2px solid #d9d9d9;
-    border-right:2px solid #d9d9d9;
+ 	border-bottom: 2px solid #ff100a;
+ 	border-left:2px solid #ff100a;
+    border-right:2px solid #ff100a;
+    border-top: 2px solid #ff100a;
 }
 .main-memo {
- 	border-left:2px solid #d9d9d9;
-    border-right:2px solid #d9d9d9;
-}
-
-
-.main-analysis,.main-memo {
- border-top:1px solid #d9d9d9;
- margin-top:5px
+    border-bottom: 2px solid #4f3bff;
+ 	border-left:2px solid #4f3bff;
+    border-right:2px solid #4f3bff;
+    border-top: 2px solid #4f3bff;
+    margin-top: 5px;
 }
 .rank-line {
  padding:10px 0 10px 10px;
  font-size:16px;
  cursor:pointer
 }
-.main-todo.rank-line {
- background-color:#FFEDE7;
+.rank-line {
  color:#F76333
 }
-.main-analysis.rank-line {
- background-color:#FFEFCB;
+.rank-line {
  color:#FEAE6A
 }
-.main-memo.rank-line {
- background-color:#D6F4FE;
- color:#3FB6DA
+.inner_div{
+    margin: auto;
+    float: center;
+    background-color: #b6cbd2;
+    width: 95%;
+    height: 40px;
+    border-radius: 5px;
+    line-height: 40px;
+}
+.memo {
+    margin-left:20px;
+    font-family: 宋体;
+    font-size: large;
+    color: #ff0707;
+}
+#add_memo{
+    margin-right: 30px;
+    float: right;
+    background-color: #b6cbd2;
+    color:#ff0707; ;
 }
 
-
-
-.footer > .container {
-  padding-right: 15%;
-  padding-left: 15%;
+#_text{
+    size: cover;
+    position: relative;
+    background-color: #2aabd2;
+}
+.col-md-11 {
+    text-align: center;
 }
 
 code {
@@ -102,13 +126,12 @@ code {
 
 .footer {
   position: absolute;
-  background-color: rgba(240, 255, 255, 0.6);  
+  background-color: rgba(240, 255, 255, 0.7);
   border-radius: 5px;  
-  bottom: 5px;
-  width: 40%;
-  right: 10%;
+  bottom: 9px;
+  width: 88%;
   /* Set the fixed height of the footer here */
-  height: 20px;
-  line-height: 20px; /* Vertically center the text there */
+  height: 40px;
+  line-height: 35px; /* Vertically center the text there */
 }
 
