@@ -23,19 +23,53 @@ body {
     color: #000;
 }
 
-#main {
+.main_right {
     padding-right:0;
-    margin-left:10%;
     height:100%!important;
     padding-left:0
 }
 .content{
+    float: right;
 	height: 90%;
-    width: 100%;
+    width: 85%;
     overflow-y:hidden
-
 }
-
+.side_menu {
+    background-color: #f1f1f1;
+    width: 15%;
+    float: left;
+    padding: 15px;
+}
+.user_img{
+    background-color: #ffff17;
+    margin:auto;
+    width: 100px;
+    height: 100px;
+    float: top;
+}
+.side_menu ul {
+    width: 150px;
+    list-style-type: none;
+    position: absolute;
+    bottom: 55px;
+}
+.side_menu li a {
+    float: bottom;
+    margin-bottom: 4px;
+    display: block;
+    padding: 15px;
+    background-color: #eee;
+    text-decoration: none;
+    color: #666;
+}
+.side_menu li a:hover {
+    background-color: #555;
+    color: white;
+}
+.side_menu li a.active {
+    background-color: #008CBA;
+    color: white;
+}
 .main-todo {
     width:48%;
     height:100%;
@@ -57,6 +91,7 @@ body {
     height:49%;
     float:right;
     background-color: rgba(240, 255, 255, 0.7 );
+    background-size: inherit;
     border-radius: 5px;
 }
 .main-todo {
@@ -79,17 +114,6 @@ body {
     border-top: 2px solid #4f3bff;
     margin-top: 5px;
 }
-.rank-line {
- padding:10px 0 10px 10px;
- font-size:16px;
- cursor:pointer
-}
-.rank-line {
- color:#F76333
-}
-.rank-line {
- color:#FEAE6A
-}
 .inner_div{
     display: block;
     float: left;
@@ -101,10 +125,10 @@ body {
     border-radius: 5px;
     line-height: 40px;
 }
-.memo {
-    margin-top: auto;
-    margin-bottom: auto;
-    font-family: 宋体;
+.p_memo {
+    text-shadow: 2px 2px #4f3bff;
+    text-align: center;
+    font-family: "Times New Roman";
     font-size: x-large;
     color: #fffd0a;
 }
@@ -118,12 +142,14 @@ body {
 }
 
 #_text {
+    white-space: wrap; /*允许文本框中的文本换行*/
     text-align: left;
     vertical-align: top;
     height: 100%;
     width: 100%;
     background-color: rgba(240, 255, 255, 0.7);
     background-image: url("/static/images/main_page/memo.jpg");
+    background-position: left top;
 }
 .add_todo{
     display: block;
@@ -154,11 +180,9 @@ code {
   background-color: rgba(240, 255, 255, 0.7);
   border-radius: 5px;  
   bottom: 9px;
-  width: 88%;
+  width: 100%;
   /* Set the fixed height of the footer here */
   height: 40px;
   line-height: 35px; /* Vertically center the text there */
 }
-
-
 
