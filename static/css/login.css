@@ -90,7 +90,20 @@
         color: blue;  
         text-decoration: underline;  
     }  
-      
+    #register {
+        font-size: 16px;
+        color: rgb(9, 9, 9);
+        text-decoration: none;
+        position: relative;
+        float: left;
+        top: 16px;
+
+    }
+
+    #register:hover {
+        color: blue;
+        text-decoration: underline;
+    }
     #login_control {  
         padding: 0 28px;  
     }

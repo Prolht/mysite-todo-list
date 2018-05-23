@@ -53,25 +53,21 @@
     <main class="main_right">
 		<div class="content">
       		<div class="main-todo">
-                <div class="add_todo" style="cursor: pointer" href="#" onclick="to_do()">
-                    <span class="label_todo">你的To-Do</span>
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                <div class="title_todo" style="cursor: pointer" href="#">
+                    <h3 id="label_todo">My To Do</h3>
+                    <input type="text" id="myInput" placeholder="ToDo...">
+                    <span onclick="newElement()" class="addBtn">新增</span>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a href="#most_imp" onclick="newElement()">特别重要</a>
+                        <a href="#gen" onclick="newElement()">一般</a>
+                        <a href="#less_imp" onclick="newElement()">不重要</a>
+                     </div>
                 </div>
                 <div class="todo_table">
-                    <input id = "radio_box" type="radio" name="sex1" value="male">Male<br>
-                    <input type="checkbox" name="sex2" value="male">Male<br>
-                    <table class="tb" border="1">
-                        <tr>
-                            <td>完成情况</td>
-                            <td>To-Do</td>
-                            <td>重要性</td>
-                        </tr>
-                        <tr>
-                            <td>已完成（将来用checkbox代替）</td>
-                            <td>写作业</td>
-                            <td>重要（用checkbox代替）</td>
-                        </tr>
-                    </table>
+                    <ul id="myUL">
+                      <li>在此处添加你的第一个To Do</li>
+                      <li>点击右侧的x号,即可完成或取消任务</li>
+                    </ul>
                 </div>
 		  		<!--<div class="rank-line" data-rank="2" style="cursor: pointer;">
         			<span class="rank rank2">重要-不紧急</span>
