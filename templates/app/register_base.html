@@ -1,0 +1,65 @@
+{% extends 'app/base.html' %}
+{% block title %}注册{% endblock %}
+
+{% block own_css %}
+    <link href="/static/css/register.css" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+   <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="/static/images/login/logo.png" alt="" width="72" height="72">
+        <h2>欢迎注册To-Do-List</h2>
+        <p class="lead">永远相信美好的事情即将发生</p>
+      </div>
+   <div class="container">
+
+      <div class="row">
+        </div>
+        <div class="col-md-8 order-md-1">
+          <h4 class="mb-3">To Be a To-Do-Lister</h4>
+          <form class="needs-validation" novalidate method="post">
+
+            <div class="mb-3">
+              <label for="username">用户名<span class="text-muted">*（汉字、字母、数字都可）</span></label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="text" class="form-control" id="username" placeholder="用户名" value="{{register_form.username.value}}"  required>
+              </div>
+            </div>
+
+            <div class="mb-3" id="email">
+              <label for="email">邮箱 <span class="text-muted">*</span></label>
+              <input type="email" class="form-control" id="email" placeholder="example@example.com" value="{{register_form.email.value}}"  required>
+            </div>
+
+            <div class="mb-3">
+              <label for="password">密码<span class="text-muted">*（最低位数为6位）</span></label>
+              <input type="password" class="form-control" id="password1" placeholder="O(∩_∩)O" value="{{register_form.password.value}}"  required>
+            </div>
+
+             <div class="mb-3">
+              <label for="password">请再次输入密码*<span class="text-muted"></span></label>
+              <input type="password" class="form-control" id="password2" placeholder="(●ˇ∀ˇ●)" required >
+            </div>
+            <hr class="mb-4">
+            % csrf_token %}
+            <button class="btn btn-primary btn-lg btn-block" type="submit" onclick="register()">注册</button>
+          </form>
+        </div>
+      </div>
+{% endblock %}
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    {% block javascript %}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="/static/js/jquery-slim.min.js"><\/script>')</script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/register.js"></script>
+    <script src="/static/js/holder.min.js"></script>
+    {% endblock %}
+

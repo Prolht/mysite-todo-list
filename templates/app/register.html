@@ -18,7 +18,7 @@
 
   <body class="bg-light">
     <div class="py-5 text-center">
-        <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <img class="d-block mx-auto mb-4" src="/static/images/login/logo.png" alt="" width="72" height="72">
         <h2>欢迎注册To-Do-List</h2>
         <p class="lead">永远相信美好的事情即将发生</p>
       </div>
@@ -28,10 +28,10 @@
         </div>
         <div class="col-md-8 order-md-1">
           <h4 class="mb-3">To Be a To-Do-Lister</h4>
-          <form class="needs-validation" novalidate>
+          <form class="needs-validation" novalidate method="post">
 
             <div class="mb-3">
-              <label for="username">用户名*<span class="text-muted">（汉字、字母、数字都可）</span></label>
+              <label for="username">用户名<span class="text-muted">*（汉字、字母、数字都可）</span></label>
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">@</span>
@@ -52,7 +52,7 @@
             </div>
 
             <div class="mb-3">
-              <label for="password">密码*<span class="text-muted">（最低位数为6位）</span></label>
+              <label for="password">密码<span class="text-muted">*（最低位数为6位）</span></label>
               <input type="password" class="form-control" id="password1" placeholder="O(∩_∩)O" required>
               <div class="invalid-feedback">
                 请输入密码
