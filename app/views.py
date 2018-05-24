@@ -1,18 +1,29 @@
+from django.db.models import Q
+from django.contrib.auth.backends import ModelBackend
 from django.shortcuts import render
 from django.shortcuts import render_to_response
 from django.shortcuts import HttpResponse
 from django.views.generic.base import View
 from .models import UserProfile
-from .forms import RegisterForm
+from .forms import RegisterForm,LoginForm
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.hashers import make_password
-
+from django.contrib.auth import authenticate,login,logout
 #业务处理逻辑的编写
+#自定义用户验证函数，实现邮箱或用户名都能登陆
+class MyBackend(ModelBackend):
+    def authenticate(self,username=None,password=None,**kwargs):
+        try:
+            user = UserProfile.objects.get(Q(username=username)|Q(email=username))
+            if user.check_password(password):
+                return user
+        except Exception as e:
+            return None
 # Create your views here.
-
 #表单
-#用户注册
 
+
+#用户注册
 class RegisterView(View):
     def get(self,request):
         #get 请求，可以将验证码等html render到register.html中
@@ -33,7 +44,7 @@ class RegisterView(View):
             user_profile.username = username
             user_profile.email = email
             user_profile.password = make_password(password)
-            user_profile.is_active = False
+            user_profile.is_active = True #判断用户是否激活
             user_profile.save()
 
             #注册完成
@@ -41,6 +52,30 @@ class RegisterView(View):
         else:
             print(register_form)
         return render(request,'app/register.html',{'register_form':register_form})
+
+
+#用户登陆
+class LoginView(View):
+    def get(self,request):
+        return render(request,'app/login.html')
+    def post(self,request):
+        login_form = LoginForm(request.POST)
+        if login_form.is_valid():
+            user_name = request.POST.get('username','')
+            password = request.POST.get('password','')
+            #与数据库中的用户进行比对
+            #上面已经地authenticate进行了重写 若成功则返回user
+            user = authenticate(request,username=user_name,password=password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return render(request,'app/main2.html')
+            return render(request,'app/login.html',{'msg':'用户名或密码错误!'})
+        else:
+            print(login_form)
+        print(login_form.errors)
+        return render(request,'app/login.html',{'msg':'用户名或密码错误!'})
+
 
 
 

@@ -31,6 +31,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# AUTH 方法（支持邮箱登录）
+AUTHENTICATION_BACKENDS = ('app.views.MyBackend',)
+
 # UserProfile 覆盖了 django 内置的 user 表
 AUTH_USER_MODEL = 'app.UserProfile'
 

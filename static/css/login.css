@@ -20,7 +20,7 @@
         margin-left: -200px;  
         margin-top: -200px;
 
-        background-color: rgba(240, 255, 255, 0.5);  
+        background-color: rgba(240, 255, 255, 0.5);
       
         border-radius: 10px;  
         text-align: center;  
@@ -37,16 +37,13 @@
     }  
       
     .label_input {  
-        font-size: 17px;
-        font-family: 宋体;  
-      
+        font-size: 18px;
         width: 70px;
         height: 40px;
         line-height: 40px;
-        text-align: center;  
-      
+        text-align: center;
         color: white;  
-        background-color: #3CD8FF;  
+        background-color: #1ecaff;
         border-top-left-radius: 5px;  
         border-bottom-left-radius: 5px;  
     }  
@@ -54,33 +51,34 @@
     .text_field {  
         width: 200px;
         height: 39px;
+        font-size: 17px;
         border-top-right-radius: 5px;  
         border-bottom-right-radius: 5px;  
         border: 0;  
     }  
       
     #btn_login {  
-        font-size: 17px;
-        font-family: 宋体;  
-        padding-left: 20px;
+        font-size: 18px;
         width: 150px;
         height: 40px;
         line-height: 31px;
         text-align: center;  
       
         color: white;  
-        background-color: #3BD9FF;  
+        background-color: #1ecaff;
         border-radius: 6px;  
-        border: 0;  
-      
+        border: 0;
         float: center;
-    }  
-      
+    }
+
+    #forget_control{
+        margin-top: 0px;
+    }
     #forget_pwd {  
         font-size: 16px;
         color: rgb(9, 9, 9);
         text-decoration: none;  
-        position: relative;  
+        position: relative;
         float: right;  
         top: 16px;
       
@@ -89,7 +87,8 @@
     #forget_pwd:hover {  
         color: blue;  
         text-decoration: underline;  
-    }  
+    }
+
     #register {
         font-size: 16px;
         color: rgb(9, 9, 9);
