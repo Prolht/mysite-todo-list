@@ -68,6 +68,7 @@
             <hr class="mb-4">
             <button class="btn btn-primary btn-lg btn-block" type="submit">注册</button>
               {% csrf_token %}
+              <p>{{ msg_email }}</p><p>{{ msg_user }}</p>
             <!--<button class="btn btn-primary btn-lg btn-block" type="submit" onclick="register()">注册</button>-->
           </form>
         </div>
