@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
+    <link rel="icon" href="/static/images/favicon.ico">
 
     <title>注册</title>
 
@@ -18,7 +18,7 @@
 
   <body class="bg-light">
     <div class="py-5 text-center">
-        <img class="d-block mx-auto mb-4" src="/static/images/login/logo.png" alt="" width="72" height="72">
+        <img class="d-block mx-auto mb-4" src="/static/images/login/logo.png" alt="" width="100" height="72">
         <h2>欢迎注册To-Do-List</h2>
         <p class="lead">永远相信美好的事情即将发生</p>
       </div>
@@ -29,14 +29,13 @@
         <div class="col-md-8 order-md-1">
           <h4 class="mb-3">To Be a To-Do-Lister</h4>
           <form class="needs-validation" novalidate method="post">
-
             <div class="mb-3">
-              <label for="username">用户名<span class="text-muted">*（汉字、字母、数字都可）</span></label>
+              <label for="username">用户名<span class="text-muted">*（字母、数字都可）</span></label>
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">@</span>
                 </div>
-                <input type="text" class="form-control" id="username" placeholder="用户名" required>
+                <input type="text" class="form-control" id="username" name="user_name" placeholder="用户名" required>
                 <div class="invalid-feedback" style="width: 100%;">
                   请填写用户名！
                 </div>
@@ -45,7 +44,7 @@
 
             <div class="mb-3" id="email">
               <label for="email">邮箱 <span class="text-muted">*</span></label>
-              <input type="email" class="form-control" id="email" placeholder="example@example.com">
+              <input type="email" class="form-control" id="email" placeholder="example@example.com" name="user_email">
               <div class="invalid-feedback">
                 邮箱无效！
               </div>
@@ -53,7 +52,7 @@
 
             <div class="mb-3">
               <label for="password">密码<span class="text-muted">*（最低位数为6位）</span></label>
-              <input type="password" class="form-control" id="password1" placeholder="O(∩_∩)O" required>
+              <input type="password" name="password1" class="form-control" id="password1" placeholder="O(∩_∩)O" required ">
               <div class="invalid-feedback">
                 请输入密码
               </div>
@@ -61,13 +60,15 @@
 
              <div class="mb-3">
               <label for="password">请再次输入密码*<span class="text-muted">（最低位数为6位）</span></label>
-              <input type="password" class="form-control" id="password2" placeholder="(●ˇ∀ˇ●)" required>
+              <input type="password" name="password2" class="form-control" id="password2" placeholder="(●ˇ∀ˇ●)" required>
               <div class="invalid-feedback">
                 密码长度不能少于6个字符
               </div>
             </div>
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit" onclick="register()">注册</button>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">注册</button>
+              {% csrf_token %}
+            <!--<button class="btn btn-primary btn-lg btn-block" type="submit" onclick="register()">注册</button>-->
           </form>
         </div>
       </div>

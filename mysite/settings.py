@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+#import pymysql
+import pymysql
+
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,6 +31,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# UserProfile 覆盖了 django 内置的 user 表
+AUTH_USER_MODEL = 'app.UserProfile'
 
 # Application definition
 
@@ -76,10 +82,9 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tododb',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'todolist.sqlite3'),
         'USER': 'root',
-        'password':'password',
         'HOST': 'localhost',
         'PORT': '3306',
 

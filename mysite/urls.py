@@ -20,6 +20,7 @@ from app import testdb
 
 urlpatterns = [
     path('register/',RegisterView.as_view(),name='register'),
+    path('admin/', admin.site.urls)
 ]
 """
   path('admin/', admin.site.urls),

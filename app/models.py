@@ -1,18 +1,15 @@
 from django.db import models
-
+from django.contrib.auth.models import AbstractUser
+#导入AbstractUser
 # Create your models here.
-class UserInfo(models.Model):
-    email = models.EmailField(verbose_name='邮箱')
-    #一个带有检查 Email 合法性的 CharField，不接受 maxlength 参数。
-    username = models.CharField(max_length=100,verbose_name='用户名')
-    pwd = models.CharField(max_length=30,verbose_name='密码')
-    create_time = models.DateTimeField(default=0,verbose_name='用户创建时间')
+class UserProfile(AbstractUser):
+    '''
+    继承Django的AbstractUser 并向里面添加两条数据内容
+    '''
+    ToDolist = models.TextField(null=True,verbose_name='todo')
+    memo = models.TextField(null=True,verbose_name='便签')
+    class Meta:
+        verbose_name = '用户信息'
+        verbose_name_plural = verbose_name #指定模型的复数形式是什么,如果不指定Django会自动在模型名称后加一个’s’
     def __str__(self):
         return self.username
-
-class UserTodo(models.Model):
-    user_email = models.EmailField(primary_key=True)
-    ToDolist = models.TextField()
-    memo = models.TextField()
-    def __str__(self):
-        return self.user_todo

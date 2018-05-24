@@ -1,7 +1,10 @@
 from django.contrib import admin
 
-from .models import UserInfo,UserTodo
+from .models import UserProfile
+
+class UserProfileAdmin(admin.ModelAdmin):
+    pass
+
 
 # Register your models here.
-admin.site.register(UserInfo)
-admin.site.register(UserTodo)
+admin.site.register(UserProfile,UserProfileAdmin)
