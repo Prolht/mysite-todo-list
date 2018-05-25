@@ -2,8 +2,8 @@ from django.db.models import Q
 from django.contrib.auth.backends import ModelBackend
 from django.shortcuts import render
 from django.views.generic.base import View
-from .models import UserProfile
-from .forms import RegisterForm,LoginForm
+from .models import UserProfile,UserTodo
+from .forms import RegisterForm,LoginForm,TodoForm
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate,login,logout
@@ -87,4 +87,16 @@ class IndexView(View):
 class MainView(View):
     def get(self,request):
         return render(request, 'main2.html')
+    def post(self,request):
+        main_form = TodoForm(request.POST)
+        if main_form.is_valid():
+            todo = request.POST.get('new_todo','')
+            user_todo = UserTodo()
+            user_todo.ToDolist = todo
+            user_todo.save()
+        else:
+            print(main_form)
+
+
+
 

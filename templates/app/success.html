@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,11 +13,28 @@
 
   <body>
   <h2>恭喜您，注册成功！</h2>
-  <p>网页会在3秒后自动跳转，若没有跳转，请点击</p>
-  <a href="/login/">跳转</a>
   </body>
-    <span style="font-size:18px;"> </span>
-    <span style="font-size:24px;">
-        <meta http-equiv="refresh" content="3;URL=login.html">
-    </span>
+    <p>网页会在<span id="totalSecond">3</span>秒后自动跳转，若没有跳转，请点击<a href="{% url 'login' %}">这里</a></p>
+        <script language="javascript" type="text/javascript">
+        var second = document.getElementById('totalSecond').textContent;
+
+        if (navigator.appName.indexOf("Explorer") > -1)  {
+            second = document.getElementById('totalSecond').innerText;
+        } else {
+            second = document.getElementById('totalSecond').textContent;
+        }
+
+        setInterval("redirect()", 1000);
+        function redirect() {
+        if (second < 0) {
+            location.href = "{% url 'login' %};
+        } else {
+            if (navigator.appName.indexOf("Explorer") > -1) {
+                document.getElementById('totalSecond').innerText = second--;
+            } else {
+                document.getElementById('totalSecond').textContent = second--;
+            }
+        }
+        }
+        </script>
 </html>
