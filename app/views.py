@@ -1,8 +1,6 @@
 from django.db.models import Q
 from django.contrib.auth.backends import ModelBackend
 from django.shortcuts import render
-from django.shortcuts import render_to_response
-from django.shortcuts import HttpResponse,HttpResponsePermanentRedirect
 from django.views.generic.base import View
 from .models import UserProfile
 from .forms import RegisterForm,LoginForm
@@ -10,6 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate,login,logout
 from django.urls import reverse
+from django.http import HttpResponse,HttpResponsePermanentRedirect,HttpResponseRedirect
 #业务处理逻辑的编写
 #自定义用户验证函数，实现邮箱或用户名都能登陆
 class MyBackend(ModelBackend):
@@ -22,8 +21,6 @@ class MyBackend(ModelBackend):
             return None
 # Create your views here.
 #表单
-
-
 #用户注册
 class RegisterView(View):
     def get(self,request):
@@ -81,8 +78,7 @@ class LoginView(View):
 class LogoutView(View):
     def get(self,request):
         logout(request)
-        return render(request,'index.html')
-        #return HttpResponsePermanentRedirect(reverse('index'))
+        return HttpResponseRedirect(reverse('index'))
 
 class IndexView(View):
     def get(self,request):

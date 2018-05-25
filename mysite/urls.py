@@ -17,7 +17,6 @@ from app.views import RegisterView,LoginView,LogoutView,IndexView,MainView
 from django.contrib import admin
 from django.conf.urls import url
 from app import testdb
-from app import views
 
 urlpatterns = [
     # 基于函数 的 View 映射 URL 方法
@@ -27,7 +26,7 @@ urlpatterns = [
     url(r'^login/$', LoginView.as_view(),name='login'),
     url(r'^register/$',RegisterView.as_view(),name='register'),
     url(r'^main/$',MainView.as_view(),name='main'),
-    url(r'^logout/$',LogoutView.as_view(),name='logout')
+    url(r'^logout/',LogoutView.as_view(),name='logout1'),
 ]
 """
   path('admin/', admin.site.urls),
