@@ -55,9 +55,9 @@
             <div class="main-todo">
                 <div class="title_todo" style="cursor: pointer" href="#">
                     <h3 class="label_todo">My To Do</h3>
-                    <form class="form_todo" method="post">
+                    <form id="form_todo">
                         <input type="text" id="myInput" placeholder="ToDo..." name="add_todo" autocomplete="off">
-                        <button class="btn new_add" type="submit">新增</button>
+                        <button class="btn new_add" type="button" id="add_new">新增</button>
                         <div id="myDropdown" class="dropdown-content">
                             <a href="#most_imp" onclick="newElement()" name="imp">特别重要</a>
                             <a href="#gen" onclick="newElement()" name="gen">一般</a>
@@ -116,6 +116,7 @@
     <script>window.jQuery || document.write('<script src="/static/js/jquery-slim.min.js"><\/script>')</script>
     <script src="/static/js/popper.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
+    <script src='/static/js/sql.js'></script>
   <script src="/static/js/main.js"></script>
   </body>
 </html>

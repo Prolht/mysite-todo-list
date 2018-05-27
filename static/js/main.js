@@ -26,7 +26,7 @@ for (i = 0; i < close.length; i++) {
 // Add a "checked" symbol when clicking on a list item
 var list = document.querySelector('ul');
 list.addEventListener('click', function(ev) {
-    if (ev.target.tagname=== 'LI') {
+    if (ev.target.Tagname=== 'LI') {
     ev.target.classList.toggle('checked');
   }
 }, false);
@@ -40,12 +40,12 @@ function newElement() {
   if (inputValue === '') {
     alert("你还木有添加To Do...");
   } else {
-    document.getElementById("myUL").appendChild(li);
+    document.getElementById("myUL").appendChild(li);//将新添加的list加入到后续的队列中
   }
-  document.getElementById("myInput").value = "";
+  document.getElementById("myInput").value = ""; //将input框置空，以便下次输入
 
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
+  var span = document.createElement("SPAN"); //创建新的span标签
+  var txt = document.createTextNode("\u00D7");//创建X号
   span.className = "close";
   span.appendChild(txt);
   li.appendChild(span);
@@ -53,7 +53,7 @@ function newElement() {
   for (i = 0; i < close.length; i++) {
     close[i].onclick = function() {
       var div = this.parentElement;
-      div.style.display = "none";
+      div.style.display = "none"; //若点击则将其隐藏
     }
   }
 }
@@ -63,7 +63,7 @@ function choose_important() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
 
-// 点击下拉菜单以外区域隐藏
+// 点击下拉菜单 以外区域隐藏
 window.onclick = function(event) {
   if (!event.target.matches('.addBtn')) {
     var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -76,3 +76,21 @@ window.onclick = function(event) {
     }
   }
 }
+
+//$("#按键的id").click(function () {
+  $("add_new").click(function () {
+  $.ajax({
+      type:"post",
+      data:$('form').serialize(),// 序列化表单值
+      async: false,
+      processData:false,
+      contentType:false,
+      error: function(request) {
+        alert("Connection error");
+        },
+      success: function(data) {
+        alert(data);  //就将返回的数据显示出来
+        window.location.href="跳转页面"
+      }
+        });
+})
