@@ -19,10 +19,8 @@ class UserTodo(models.Model):
     ToDolist = models.CharField(max_length=255,verbose_name='todo')
     memo = models.TextField(null=True, blank=True,verbose_name='便签')
     done = models.BooleanField(default=False,verbose_name='完成状态')
-    state_imp = models.IntegerField(choices=((1,'非常重要'),(2,'一般'),(3,'不重要')),default=1)
+    #state_imp = models.IntegerField(choices=((1,'非常重要'),(2,'一般'),(3,'不重要')),default=1)
     class Meta:
         verbose_name = '用户自增信息'
         verbose_name_plural = verbose_name
-    def __str__(self):
-        return self.ToDolist &self.memo
 

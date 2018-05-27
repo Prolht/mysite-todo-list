@@ -16,8 +16,10 @@ class LoginForm(forms.Form):
 class TodoForm(forms.Form):
     todo = forms.Textarea() #todoform表
     memo = forms.Textarea()
-    anyl = forms.Media() #给分析预留位置
-    states = forms.IntegerField(required=True)
 
-
-
+    ''''
+    
+    states = forms.IntegerField()
+    created_time = forms.DateField()
+    done = forms.BooleanField()
+    '''

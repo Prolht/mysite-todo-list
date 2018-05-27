@@ -88,15 +88,26 @@ class MainView(View):
     def get(self,request):
         return render(request, 'main2.html')
     def post(self,request):
+        print('hhhh')
         main_form = TodoForm(request.POST)
         if main_form.is_valid():
-            todo = request.POST.get('new_todo','')
-            user_todo = UserTodo()
-            user_todo.ToDolist = todo
-            user_todo.save()
+            print('ddd')
+            user_email= UserProfile.objects.get(id=2)
+            memo = 'zuofan'
+            done = True
+            todo = 'dddd'
+            print('todo')
+            todo1 = request.POST.get('add_todo','')
+            print(todo1)
+            '''user_todo = UserTodo(ToDolist=todo,done=done,memo=memo,user_email=user_email)'''
+            #user_todo.save()
         else:
             print(main_form)
-
-
-
+        return render(request,'main2.html')
+#全局404 函数
+def page_not_found(request):
+    from django.shortcuts import render_to_response
+    response = render_to_response('404.html', {})
+    response.status_code = 404
+    return response
 

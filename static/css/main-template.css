@@ -176,11 +176,17 @@ body {
     line-height: 40px;
 }
 
-#label_todo{
+.label_todo{
     float: left;
     color: #ffffff;
     margin-left: 15px;
 
+}
+.form_todo{
+    height: 40px;
+    float: right;
+    margin-right: 15px;
+    bottom: 5px;
 }
 #myInput{
     float: right;
@@ -200,9 +206,13 @@ body {
     display: inline-block;
 }
 .addBtn:hover {
-    background-color: #3bff9e;
+    background-color: #91ff95;
 }
-
+.btn new_add{
+    padding: 0px;
+    bottom:10px;
+    background-color: #23f8ff;
+}
 .dropdown-content {
     display: none;
     position: absolute;

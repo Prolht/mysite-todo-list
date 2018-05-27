@@ -52,18 +52,20 @@
     </nav>
     <main class="main_right">
 		<div class="content">
-            <form name="todo_form" method="post" class="todo_form">
-      		    <div class="main-todo">
+            <div class="main-todo">
                 <div class="title_todo" style="cursor: pointer" href="#">
-                    <h3 id="label_todo">My To Do</h3>
-                    <input type="submit" id="myInput" placeholder="ToDo..." name="new_todo">
-                    {% csrf_token %}
-                    <span onclick="newElement()" >新增</span>
-                    <div id="myDropdown" class="dropdown-content">
-                        <a href="#" onclick="newElement()" name="imp" class="addBtn">特别重要</a>
-                        <a href="#" onclick="newElement()" name="gen" class="addBtn">一般</a>
-                        <a href="#" onclick="newElement()" name="not_imp" class="addBtn">不重要</a>
-                     </div>
+                    <h3 class="label_todo">My To Do</h3>
+                    <form class="form_todo" method="post">
+                        <input type="text" id="myInput" placeholder="ToDo..." name="add_todo" autocomplete="off">
+                        <button class="btn new_add" type="submit">新增</button>
+                        <div id="myDropdown" class="dropdown-content">
+                            <a href="#most_imp" onclick="newElement()" name="imp">特别重要</a>
+                            <a href="#gen" onclick="newElement()" name="gen">一般</a>
+                            <a href="#less_imp" onclick="newElement()" name="not_imp">不重要</a>
+                         </div>
+                        {% csrf_token %}
+                    </form>
+
                 </div>
                 <div class="todo_table">
                     <ul id="myUL">
@@ -78,14 +80,10 @@
     			</div>
 				-->
       		</div>
-            </form>
-            <form name="any_form" method="post" class="any_form">
-	  		    <div class="main-analysis">
+	  		<div class="main-analysis">
 
      		</div>
-            </form>
-            <form name="memo_form" method="post" class="memo_form">
-	  		    <div class="main-memo">
+	  		<div class="main-memo">
                 <div class="inner_div" style="cursor: pointer" href="#">
                     <p class="p_memo">便签</p>
                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
@@ -94,7 +92,6 @@
                     <textarea id="_text" placeholder="在此处添加你的便签"></textarea>>
                 </div>
       		</div>
-            </form>
 		</div>
         <div class="side_menu">
             <div class="user_img">这里应该有用户头像</div>
@@ -124,3 +121,4 @@
 </html>
 
 
+input.form-control:nth-child(1)

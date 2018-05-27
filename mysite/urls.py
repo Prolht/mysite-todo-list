@@ -17,6 +17,9 @@ from app.views import RegisterView,LoginView,LogoutView,IndexView,MainView
 from django.contrib import admin
 from django.conf.urls import url
 from app import testdb
+import app
+from django.conf import settings
+from django.views.static import serve
 
 urlpatterns = [
     # 基于函数 的 View 映射 URL 方法
@@ -28,9 +31,16 @@ urlpatterns = [
     url(r'^main/$',MainView.as_view(),name='main'),
     url(r'^logout/',LogoutView.as_view(),name='logout1'),
 ]
+# 全局 404 页面配置（django 会自动调用这个变量）
+handler404 = 'app.views.page_not_found'
 """
-  path('admin/', admin.site.urls),
-  
-  path('index/',views.index),
-  path('main/',views.main),
-  """
+if settings.DEBUG:
+    # debug_toolbar 插件配置
+    import debug_toolbar
+    urlpatterns.append(url(r'^__debug__/', include(debug_toolbar.urls)))
+else:
+    # 项目部署上线时使用
+    from mysite.settings import STATIC_ROOT
+    # 配置静态文件访问处理
+    urlpatterns.append(url(r'^static/(?P<path>.*)$', serve, {'document_root': STATIC_ROOT}))
+"""
