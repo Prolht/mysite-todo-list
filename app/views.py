@@ -87,6 +87,8 @@ class IndexView(View):
 class MainView(View):
     def get(self,request):
         return render(request, 'main2.html')
+
+
     def post(self,request):
         print('hhhh')
         main_form = TodoForm(request.POST)
@@ -111,3 +113,26 @@ def page_not_found(request):
     response.status_code = 404
     return response
 
+from django.views.decorators.csrf import csrf_exempt
+import json
+@csrf_exempt
+def save_info(request):
+    print('here......')
+    '''
+    后台处理来自前端的数据
+    :param request:
+    :return:
+    '''
+    if request.method == 'POST':
+        print('here...')
+        user_email = UserProfile.objects.get(id=2)
+        memo = 'zuofan'
+        done = True
+        todo = 'dddd'
+        try:
+            todo = request.POST.get('todo')
+            if todo is not None:
+                user_todo = UserTodo(ToDolist=todo, done=done, memo=memo, user_email=user_email)
+                user_todo.save()
+        except Exception as e:
+            pass

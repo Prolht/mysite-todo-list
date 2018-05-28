@@ -35,15 +35,17 @@ list.addEventListener('click', function(ev) {
 function newElement() {
   var li = document.createElement("li");
   var inputValue = document.getElementById("myInput").value;
+  console.log(inputValue)
   var t = document.createTextNode(inputValue);
   li.appendChild(t);
   if (inputValue === '') {
     alert("你还木有添加To Do...");
   } else {
     document.getElementById("myUL").appendChild(li);//将新添加的list加入到后续的队列中
+    save_todo();
   }
-  document.getElementById("myInput").value = ""; //将input框置空，以便下次输入
 
+  document.getElementById("myUL");
   var span = document.createElement("SPAN"); //创建新的span标签
   var txt = document.createTextNode("\u00D7");//创建X号
   span.className = "close";
@@ -56,6 +58,7 @@ function newElement() {
       div.style.display = "none"; //若点击则将其隐藏
     }
   }
+
 }
 
 /* 点击按钮，下拉菜单在 显示/隐藏 之间切换 */
@@ -76,9 +79,32 @@ window.onclick = function(event) {
     }
   }
 }
-
+function save_todo(){
+  $.ajax({
+      type:"post",
+      url:"/save_info/",
+      data:{
+        'todo':$("#myInput").val(),
+      },
+       //'todo':$("#myInput").val(),
+      //data: $("#form_todo").serialize(),// 序列化表单值
+      dataType: "text",//预期服务器返回的数据类型
+      //async: true,
+      //processData:false,
+      //contentType:false,
+      success: function(data) {
+        //console.log("over..");
+        //alert(data);  //就将返回的数据显示出来
+        //window.location.href="跳转页面"
+      },
+      error: function(data) {
+        //console.log(data);
+       // alert("Connection error");
+        }
+        });
+}
 //$("#按键的id").click(function () {
-  $("add_new").click(function () {
+/*
   $.ajax({
       type:"post",
       data:$('form').serialize(),// 序列化表单值
@@ -86,11 +112,14 @@ window.onclick = function(event) {
       processData:false,
       contentType:false,
       error: function(request) {
+        console.log("here is..");
         alert("Connection error");
         },
       success: function(data) {
+        console.log("over..");
         alert(data);  //就将返回的数据显示出来
         window.location.href="跳转页面"
       }
         });
 })
+*/

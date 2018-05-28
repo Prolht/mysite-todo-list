@@ -16,7 +16,7 @@ Including another URLconf
 from app.views import RegisterView,LoginView,LogoutView,IndexView,MainView
 from django.contrib import admin
 from django.conf.urls import url
-from app import testdb
+from app import testdb,views
 import app
 from django.conf import settings
 from django.views.static import serve
@@ -25,11 +25,12 @@ urlpatterns = [
     # 基于函数 的 View 映射 URL 方法
     #path('register/',RegisterView.as_view(),name='register'),
     url(r'^admin/', admin.site.urls),
-    url(r'^$',IndexView.as_view(),name='index'),
     url(r'^login/$', LoginView.as_view(),name='login'),
     url(r'^register/$',RegisterView.as_view(),name='register'),
     url(r'^main/$',MainView.as_view(),name='main'),
     url(r'^logout/',LogoutView.as_view(),name='logout1'),
+    url(r'^save_info/$',views.save_info),
+    url(r'^$',IndexView.as_view(),name='index'),
 ]
 # 全局 404 页面配置（django 会自动调用这个变量）
 handler404 = 'app.views.page_not_found'

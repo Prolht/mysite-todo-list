@@ -57,13 +57,12 @@
                     <h3 class="label_todo">My To Do</h3>
                     <form id="form_todo">
                         <input type="text" id="myInput" placeholder="ToDo..." name="add_todo" autocomplete="off">
-                        <button class="btn new_add" type="button" id="add_new">新增</button>
+                        <button class="btn new_add" type="button" id="add_new" onclick="newElement()">新增</button>
                         <div id="myDropdown" class="dropdown-content">
                             <a href="#most_imp" onclick="newElement()" name="imp">特别重要</a>
                             <a href="#gen" onclick="newElement()" name="gen">一般</a>
                             <a href="#less_imp" onclick="newElement()" name="not_imp">不重要</a>
                          </div>
-                        {% csrf_token %}
                     </form>
 
                 </div>
@@ -112,14 +111,11 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="/static/js/jquery-slim.min.js"><\/script>')</script>
-    <script src="/static/js/popper.min.js"></script>
+    <!--<script src="/static/js/popper.min.js"></script>-->
     <script src="/static/js/bootstrap.min.js"></script>
-    <script src='/static/js/sql.js'></script>
-  <script src="/static/js/main.js"></script>
+    <!--<script src='/static/js/sql.js'></script>-->
+    <script src="/static/js/main.js"></script>
   </body>
 </html>
-
-
-input.form-control:nth-child(1)
