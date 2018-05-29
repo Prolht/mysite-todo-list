@@ -12,14 +12,3 @@ class RegisterForm(forms.Form):
 class LoginForm(forms.Form):
     username = forms.CharField(required=True,error_messages={'required':'用户名不能为空',})
     password = forms.CharField(required=True,error_messages={'required':'密码不能为空',})
-
-class TodoForm(forms.Form):
-    todo = forms.Textarea() #todoform表
-    memo = forms.Textarea()
-
-    ''''
-    
-    states = forms.IntegerField()
-    created_time = forms.DateField()
-    done = forms.BooleanField()
-    '''

@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^main/$',MainView.as_view(),name='main'),
     url(r'^logout/',LogoutView.as_view(),name='logout1'),
     url(r'^save_info/$',views.save_info),
+    url(r'^save_hide_todo/$',views.save_hide_todo),
     url(r'^$',IndexView.as_view(),name='index'),
 ]
 # 全局 404 页面配置（django 会自动调用这个变量）

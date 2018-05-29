@@ -3,12 +3,14 @@ from django.contrib.auth.backends import ModelBackend
 from django.shortcuts import render
 from django.views.generic.base import View
 from .models import UserProfile,UserTodo
-from .forms import RegisterForm,LoginForm,TodoForm
+from .forms import RegisterForm,LoginForm
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate,login,logout
 from django.urls import reverse
 from django.http import HttpResponse,HttpResponsePermanentRedirect,HttpResponseRedirect
+from django.forms.models import model_to_dict
+
 #业务处理逻辑的编写
 #自定义用户验证函数，实现邮箱或用户名都能登陆
 class MyBackend(ModelBackend):
@@ -21,13 +23,14 @@ class MyBackend(ModelBackend):
             return None
 # Create your views here.
 #表单
+
+
 #用户注册
 class RegisterView(View):
     def get(self,request):
         #get 请求，可以将验证码等html render到register.html中
         register_form = RegisterForm()
         return render(request,'register.html',{'register_form':register_form})
-
     def post(self,request):
         register_form = RegisterForm(request.POST)
         if register_form.is_valid():
@@ -67,12 +70,13 @@ class LoginView(View):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return render(request,'main2.html')
+                    return HttpResponseRedirect(reverse('main'))
             return render(request,'login.html',{'msg':'用户名或密码错误!'})
         else:
             print(login_form)
         print(login_form.errors)
         return render(request,'login.html',{'msg':'用户名或密码错误!'})
+
 
 #用户退出登陆
 class LogoutView(View):
@@ -84,28 +88,22 @@ class IndexView(View):
     def get(self,request):
         return render(request, 'index.html')
 
+
+#用户登陆以后显示的main页面
 class MainView(View):
     def get(self,request):
-        return render(request, 'main2.html')
-
-
+        user_email = UserProfile.objects.get(username=request.user)  #注意打印出的是用户名
+        todo_query = UserTodo.objects.filter(user_email=user_email)
+        todo_dict = todo_query.values("ToDolist").values("ToDolist")
+        todo_list = []
+        for todo in todo_dict:
+            todo_list.append(todo["ToDolist"])
+        return render(request, 'main2.html',{'todolist':todo_list})
     def post(self,request):
-        print('hhhh')
-        main_form = TodoForm(request.POST)
-        if main_form.is_valid():
-            print('ddd')
-            user_email= UserProfile.objects.get(id=2)
-            memo = 'zuofan'
-            done = True
-            todo = 'dddd'
-            print('todo')
-            todo1 = request.POST.get('add_todo','')
-            print(todo1)
-            '''user_todo = UserTodo(ToDolist=todo,done=done,memo=memo,user_email=user_email)'''
-            #user_todo.save()
-        else:
-            print(main_form)
+        psss
         return render(request,'main2.html')
+
+
 #全局404 函数
 def page_not_found(request):
     from django.shortcuts import render_to_response
@@ -113,26 +111,37 @@ def page_not_found(request):
     response.status_code = 404
     return response
 
+
+#将用户添加的todo保存到数据库中,加装饰符为了防止csrf对其进行拦截
 from django.views.decorators.csrf import csrf_exempt
-import json
 @csrf_exempt
 def save_info(request):
-    print('here......')
-    '''
-    后台处理来自前端的数据
-    :param request:
-    :return:
-    '''
     if request.method == 'POST':
-        print('here...')
-        user_email = UserProfile.objects.get(id=2)
+        user_email = UserProfile.objects.get(username=request.user)
         memo = 'zuofan'
-        done = True
+        done = False
         todo = 'dddd'
         try:
-            todo = request.POST.get('todo')
+            todo = request.POST.get('todo')#获取从后端返回的数据
             if todo is not None:
                 user_todo = UserTodo(ToDolist=todo, done=done, memo=memo, user_email=user_email)
                 user_todo.save()
         except Exception as e:
             pass
+
+
+#用户点击右侧的X号，对todo进行隐藏
+@csrf_exempt
+def save_hide_todo(request):
+    if request.method == 'POST':
+        user_email = UserProfile.objects.get(username=request.user) #获取当前登陆用户的todo id
+        print(user_email)
+        try:
+            done = request.POST.get('done')
+            id = int(request.POST.get('id'))+1  #数据库中的id从1开始
+            User = UserTodo.objects.filter(user_email=user_email)
+            User = User.get(id=id)
+            User.done = True
+            User.save()
+        except Exception as e:
+            print(e)

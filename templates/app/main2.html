@@ -68,8 +68,9 @@
                 </div>
                 <div class="todo_table">
                     <ul id="myUL">
-                      <li>在此处添加你的第一个To Do</li>
-                      <li>点击右侧的x号,即可完成或取消任务</li>
+                         {% for todo in todolist %}
+                                <li><span>{{ todo }}</span></li>
+                         {% endfor %}
                     </ul>
                 </div>
 		  		<!--<div class="rank-line" data-rank="2" style="cursor: pointer;">
@@ -93,7 +94,9 @@
       		</div>
 		</div>
         <div class="side_menu">
-            <div class="user_img">这里应该有用户头像</div>
+            {% if request.user.is_authenticated %}
+            <div class="user_img">{{ request.user.username }}</div>
+            {% endif %}
             <ul>
                 <li><a href="#flight" class="active">账户设置</a></li>
                 <li><a href="#city">邮件</a></li>
