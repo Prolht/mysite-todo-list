@@ -55,10 +55,31 @@ class RegisterView(View):
         return render(request,'register.html',{'register_form':register_form})
 
 
-#用户登陆
+#用户登陆  ajax方式
 class LoginView(View):
     def get(self,request):
-        return render(request,'login.html')
+        return render(request,'login1.html')
+
+@csrf_exempt
+def login_auth(request):
+    if request.method == 'POST':
+        try:
+            email = request.POST.get('email')  # 获取从后端返回的数据
+            password = request.POST.get('password')  # 获取从后端返回的数据
+            print(email)
+            print(password)
+            user = authenticate(request, username=email, password=password)
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect(reverse('main'))
+            return render(request, 'login1.html', {'msg': '用户名或密码错误!'})
+        except Exception as e:
+            print(e)
+"""
+#用户登陆  form方式
+class LoginView(View):
+    def get(self,request):
+        return render(request,'login1.html')
     def post(self,request):
         login_form = LoginForm(request.POST)
         if login_form.is_valid():
@@ -76,8 +97,7 @@ class LoginView(View):
             print(login_form)
         print(login_form.errors)
         return render(request,'login.html',{'msg':'用户名或密码错误!'})
-
-
+"""
 #用户退出登陆
 class LogoutView(View):
     def get(self,request):
@@ -114,7 +134,7 @@ def page_not_found(request):
 
 
 #将用户添加的todo保存到数据库中,加装饰符为了防止csrf对其进行拦截
-from django.views.decorators.csrf import csrf_exempt
+
 @csrf_exempt
 def save_info(request):
     if request.method == 'POST':
