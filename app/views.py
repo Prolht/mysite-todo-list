@@ -93,7 +93,8 @@ class IndexView(View):
 class MainView(View):
     def get(self,request):
         user_email = UserProfile.objects.get(username=request.user)  #注意打印出的是用户名
-        todo_query = UserTodo.objects.filter(user_email=user_email)
+        todo_query = UserTodo.objects.filter(user_email=user_email,done=False)
+        todo_query = todo_query.order_by("created_time")
         todo_dict = todo_query.values("ToDolist").values("ToDolist")
         todo_list = []
         for todo in todo_dict:
@@ -124,7 +125,7 @@ def save_info(request):
         try:
             todo = request.POST.get('todo')#获取从后端返回的数据
             if todo is not None:
-                user_todo = UserTodo(ToDolist=todo, done=done, memo=memo, user_email=user_email)
+                user_todo = UserTodo(user_index=1,ToDolist=todo, done=done, memo=memo, user_email=user_email)
                 user_todo.save()
         except Exception as e:
             pass

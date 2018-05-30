@@ -13,6 +13,7 @@ class UserProfile(AbstractUser):
         verbose_name_plural = verbose_name #指定模型的复数形式是什么,如果不指定Django会自动在模型名称后加一个’s’
 
 class UserTodo(models.Model):
+    #user_index = models.DateTimeField(default=0,verbose_name="用户todo索引")
     created_time = models.DateTimeField(default=datetime.now,verbose_name='创建时间')
     user_email = models.ForeignKey(UserProfile,on_delete=models.CASCADE)  #设置外键，关联到UserProfile表
     # models.CASCADE表示若删除用户，则用户下的所有UserTodo也会被删除

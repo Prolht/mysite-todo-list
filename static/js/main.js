@@ -14,21 +14,7 @@ for (i = 0; i < myNodelist.length; i++) {
 }
 
 
-// Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-    (function(i){
-      close[i].onclick = function()
-      {
-        var div = this.parentElement;
-        hide_ele(div)
-        console.log(i)
-        save_hide_todo(i)
-        };
-    }(i));
-}
-
+/
 //对目标标签进行隐藏
 function hide_ele(div) {
     div.style.display = "none";
@@ -42,6 +28,7 @@ list.addEventListener('click', function(ev) {
     ev.target.classList.toggle('checked');
   }
 }, false);
+
 
 // 当点击”新增“按钮时，增加新的元素，并保存在数据库中
 function newElement() {
@@ -70,6 +57,22 @@ function newElement() {
       div.style.display = "none";
     }
   }
+}
+
+
+/ Click on a close button to hide the current list item
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+    (function(i){
+      close[i].onclick = function()
+      {
+        var div = this.parentElement;
+        hide_ele(div)
+        console.log(i)
+        save_hide_todo(i)
+        };
+    }(i));
 }
 
 /* 点击按钮，下拉菜单在 显示/隐藏 之间切换 */
