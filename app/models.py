@@ -7,6 +7,7 @@ class UserProfile(AbstractUser):
     '''
     继承Django的AbstractUser 并向里面添加两条数据内容
     '''
+    #image = models.ImageField(max_length=100, upload_to='image/%Y/%m', default='image?default.png', verbose_name='头像')
     gender = models.CharField(max_length=6,choices=(('male','男'),('female','女')),default='female',verbose_name='性别')
     class Meta:
         verbose_name = '用户信息'

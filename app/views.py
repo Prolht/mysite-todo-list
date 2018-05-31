@@ -54,32 +54,10 @@ class RegisterView(View):
             print(register_form)
         return render(request,'register.html',{'register_form':register_form})
 
-
-#用户登陆  ajax方式
+#用户登陆
 class LoginView(View):
     def get(self,request):
-        return render(request,'login1.html')
-
-@csrf_exempt
-def login_auth(request):
-    if request.method == 'POST':
-        try:
-            email = request.POST.get('email')  # 获取从后端返回的数据
-            password = request.POST.get('password')  # 获取从后端返回的数据
-            print(email)
-            print(password)
-            user = authenticate(request, username=email, password=password)
-            if user.is_active:
-                login(request, user)
-                return HttpResponseRedirect(reverse('main'))
-            return render(request, 'login1.html', {'msg': '用户名或密码错误!'})
-        except Exception as e:
-            print(e)
-"""
-#用户登陆  form方式
-class LoginView(View):
-    def get(self,request):
-        return render(request,'login1.html')
+        return render(request, 'login.html')
     def post(self,request):
         login_form = LoginForm(request.POST)
         if login_form.is_valid():
@@ -92,12 +70,12 @@ class LoginView(View):
                 if user.is_active:
                     login(request, user)
                     return HttpResponseRedirect(reverse('main'))
-            return render(request,'login.html',{'msg':'用户名或密码错误!'})
+            return render(request, 'login.html', {'msg': '用户名或密码错误!'})
         else:
             print(login_form)
         print(login_form.errors)
         return render(request,'login.html',{'msg':'用户名或密码错误!'})
-"""
+
 #用户退出登陆
 class LogoutView(View):
     def get(self,request):
@@ -119,12 +97,21 @@ class MainView(View):
         todo_list = []
         for todo in todo_dict:
             todo_list.append(todo["ToDolist"])
-        return render(request, 'main2.html',{'todolist':todo_list})
+        return render(request, 'main.html', {'todolist':todo_list})
     def post(self,request):
         psss
-        return render(request,'main2.html')
+        return render(request, 'main.html')
 
-
+class Person_info(View):
+    def get(self,request):
+        return render(request,'person_info.html')
+    def post(self,request):
+        '''
+        用户提交修改个人信息
+        :param request:
+        :return:
+        '''
+        pass
 #全局404 函数
 def page_not_found(request):
     from django.shortcuts import render_to_response
@@ -166,3 +153,5 @@ def save_hide_todo(request):
             User.save()
         except Exception as e:
             print(e)
+def main2(request):
+    return render(request,'main2.html')

@@ -1,30 +1,56 @@
 <!doctype html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>登陆到To-Do-List</title>
-	<link rel="stylesheet" type="text/css" href="/static/css/login.css"/>
-	<script type="text/javascript" src="/static/js/login.js"></script>
-</head>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/static/images/favicon.ico">
 
-<body>
-	<div id="login_frame">
-	<p id="image_logo"><img src="/static/images/login/logo.png"></p>
-	<form method="post" novalidate autocomplete="off">
-		<p><label class="label_input">用户名</label><input type="text"class="text_field" name="username" placeholder="用户名/邮箱"/></p>
-		<p><label class="label_input">密码</label><input type="password" id="password" class="text_field" name="password" placeholder="输入密码"/></p>
-		<div id="login_control">
-            <input type="submit"id="btn_login" value="登陆" />
-            {% csrf_token %}
-		</div>
+    <title>登陆 To Do list</title>
 
-            <div id="forget_control">
-                <a id="register" href="/register/">戳我注册</a>
-                <a class="error_msg">{{ msg }}</a>
-                <a id="forget_pwd" href="/forget_pwd/">忘记密码？</a>
-            </div>
-		</form>
-	</div>
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
-</body>
+    <!-- Custom styles for this template -->
+    <link href="/static/css/login.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <form class="form-signin" method="post">
+      <div class="text-center mb-4">
+        <!--
+        <img class="mb-4" src="/static/images/main_page/logo_small.png" alt="" width="144" height="72">
+        -->
+        <h1 class="h3 mb-3 font-weight-normal">登陆 To Do list</h1>
+        <p><a href="/register/" class="register_label">马上戳我注册！</a></p>
+      </div>
+
+      <div class="form-label-group">
+        <input type="email" id="inputEmail" name="username" class="form-control" placeholder="example@example.com" required autofocus>
+        <label for="inputEmail">Email</label>
+      </div>
+
+      <div class="form-label-group">
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+        <label for="inputPassword">Password</label>
+      </div>
+
+      <div class="checkbox mb-3">
+        <label class="mycheck_box">
+          <a class="text-left text-white" href="/forget_pwd/">忘记密码？</a>
+          <a class="msg">{{ msg }}</a>
+          <!--
+            <input type="checkbox" value="remember-me"> 记住我
+          -->
+        </label>
+      </div>
+
+      <button class="btn btn-lg btn-primary btn-block" onclick="login()" type="submit">登陆</button>
+        {% csrf_token %}
+    </form>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="/static/js/login.js"></script>
+  <script src="/static/js/bootstrap.min.js"></script>
 </html>

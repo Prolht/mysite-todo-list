@@ -99,6 +99,7 @@ function save_todo(){
   $.ajax({
       type:"post",
       url:"/save_info/",
+      cache:false,
       data:{
         'todo':$("#myInput").val(),
       },
@@ -110,7 +111,7 @@ function save_todo(){
       },
       error: function(data) {
         //console.log(data);
-       // alert("Connection error");
+       alert("Connection error");
         }
         });
 }
@@ -120,6 +121,7 @@ function save_hide_todo(id) {
     $.ajax({
       type:"post",
       url:"/save_hide_todo/",
+      cache:false,
       data:{
           'id':id,
       },
