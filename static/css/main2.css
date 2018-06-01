@@ -54,7 +54,7 @@ body {
 .iconfont{
 	font-family:"iconfont";
 	font-size:45px;
-    color: #7e8282;
+    color: #f9ffff;
 	font-style:normal;
 	-webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;
@@ -62,12 +62,46 @@ body {
     padding-left:20px
 }
 .iconfont:hover{
-    color: #c2ecff;
+    color: #2c1bff;
 }
 
 .modal-body li{
-
     decoration: none;
+}
+
+.side_clock{
+    width: 180px;
+    height:800px;
+    left: 10px;
+    top:10px;
+    position: absolute;
+}
+.center_todo{
+    height: 800px;
+    margin:0 310px 0 200px;
+    width: 1000px;
+    text-align: right;
+    overflow: hidden;
+}
+
+.right_memo{
+    right: 10px;
+    top: 10px;
+    width: 100px;
+    height: 800px;
+    position: absolute;
+    text-align: center;
+}
+#clock_date{
+    font-size: 35px;
+    color: white;
+    font-family: "Times New Roman";
+    margin-top: 20px;
+}
+#clock_time{
+    font-size: 25px;
+    font-family: "Times New Roman";
+    color: white;
 }
 
 #user_img{
@@ -81,29 +115,86 @@ body {
     position: absolute;
 }
 #foot{
-    bottom: 20px;
-    height: 30px;
+    bottom: 40px;
+    height: 80px;
     width: 100%;
     background-color: #818181 0.8;
     position: fixed;
 }
 
-.footer{
+.foot_menu{
+    height: 60px;
+    width: 180px;
+    margin:auto;
+}
+.foot_label{
+    margin-top: 20px;
+    height: 30px;
+    color: white;
     text-align: center;
+}
+.foot_label a{
+    color:white;
+}
+
+
+
+/*以下区域控制中间todo的显示*/
+.todo{
+    height: 120px;
+}
+.todo span{
+    margin-top: 20px;
+}
+
+.todo li{
+    overflow: hidden;
+    list-style: none;
+}
+
+.first span{
     color: white;
 }
 
-.footer a{
+.second span{
+    color: #A4D3EE;
+}
+.third span{
+    color: #96CDCD;
+}
+.forth span{
+    color: #778899 ;
+}
+.first li{
+    height: 70px;
+    margin-top: 20px;
+    font-size: 55px;
     color: white;
 }
-
-
+.second li{
+    height: 55px;
+    margin-top: 20px;
+    font-size: 40px;
+    color: #A4D3EE;
+}
+.third li{
+    height: 45px;
+    margin-top: 20px;
+    font-size: 30px;
+    color: #96CDCD;
+}
+.forth li{
+    height: 35px;
+    margin-top: 20px;
+    font-size: 25px;
+    color: #778899 ;
+}
 /*阿里的图标*/
 @font-face {
   font-family: 'iconfont';  /* project id 688321 */
-  src: url('//at.alicdn.com/t/font_688321_rlqafkizc6usor.eot');
-  src: url('//at.alicdn.com/t/font_688321_rlqafkizc6usor.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_688321_rlqafkizc6usor.woff') format('woff'),
-  url('//at.alicdn.com/t/font_688321_rlqafkizc6usor.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_688321_rlqafkizc6usor.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_688321_yya8amgbxym34n29.eot');
+  src: url('//at.alicdn.com/t/font_688321_yya8amgbxym34n29.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_688321_yya8amgbxym34n29.woff') format('woff'),
+  url('//at.alicdn.com/t/font_688321_yya8amgbxym34n29.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_688321_yya8amgbxym34n29.svg#iconfont') format('svg');
 }
