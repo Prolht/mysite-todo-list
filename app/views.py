@@ -10,6 +10,8 @@ from django.contrib.auth import authenticate,login,logout
 from django.urls import reverse
 from django.http import HttpResponse,HttpResponsePermanentRedirect,HttpResponseRedirect
 from django.forms.models import model_to_dict
+import re
+
 
 #业务处理逻辑的编写
 #自定义用户验证函数，实现邮箱或用户名都能登陆
@@ -92,15 +94,27 @@ class MainView(View):
     def get(self,request):
         user_email = UserProfile.objects.get(username=request.user)  #注意打印出的是用户名
         todo_query = UserTodo.objects.filter(user_email=user_email,done=False)
-        todo_query = todo_query.order_by("created_time")
+        todo_query = todo_query.order_by("deadline") #按照截至日期按照从小到大的顺序进行筛选
+        # todo_query = todo_query.order_by("-deadline")  按照截至日期按照从大到小的顺序进行筛选
         todo_dict = todo_query.values("ToDolist").values("ToDolist")
         todo_list = []
-        for todo in todo_dict:
+        for todo in todo_dict[0:5]:
             todo_list.append(todo["ToDolist"])
-        return render(request, 'main.html', {'todolist':todo_list})
+        time_dict = todo_query.values("deadline").values("deadline")
+        time_list = []
+        for time in time_dict[0:5]:
+            buff_time = str(time["deadline"])
+            pat = '[0-9]+'
+            buff_time = re.findall(pat,buff_time)
+            buff_time = buff_time[0]+'年'+buff_time[1]+'月'+buff_time[2]+'日'+buff_time[3]+'时'+buff_time[4]+'分'
+            time_list.append(buff_time)
+        para_todo = {'todolist0':todo_list[0],'todolist1':todo_list[1],'todolist2':todo_list[2],'todolist3':todo_list[3]}
+        para_time = {'time0':time_list[0],'time1':time_list[1],'time2':time_list[2],'time3':time_list[3]}
+        para = dict(para_todo,**para_time) #将两个字典连接到一块
+        return render(request, 'main2.html',para)
     def post(self,request):
         psss
-        return render(request, 'main.html')
+        return render(request, 'main2.html')
 
 class Person_info(View):
     def get(self,request):
@@ -126,19 +140,25 @@ def page_not_found(request):
 def save_info(request):
     if request.method == 'POST':
         user_email = UserProfile.objects.get(username=request.user)
-        memo = 'zuofan'
+        memo = ''
         done = False
         todo = 'dddd'
         try:
             todo = request.POST.get('todo')#获取从后端返回的数据
+            datetime = str(request.POST.get('datetime'))
+            datetime = datetime.replace('年','-')
+            datetime = datetime.replace('月', '-')
+            datetime = datetime.replace('日', ' ')
+            datetime = datetime.replace('时', ':')
+            datetime = datetime.replace('分', '')
             if todo is not None:
-                user_todo = UserTodo(user_index=1,ToDolist=todo, done=done, memo=memo, user_email=user_email)
+                user_todo = UserTodo(ToDolist=todo,deadline=datetime,done=done,memo=memo, user_email=user_email)
                 user_todo.save()
         except Exception as e:
             pass
 
 
-#用户点击右侧的X号，对todo进行隐藏
+#用户点击右侧的X号，对todo进行隐藏 暂且不用
 @csrf_exempt
 def save_hide_todo(request):
     if request.method == 'POST':
@@ -153,5 +173,3 @@ def save_hide_todo(request):
             User.save()
         except Exception as e:
             print(e)
-def main2(request):
-    return render(request,'main2.html')

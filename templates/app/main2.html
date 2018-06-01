@@ -16,6 +16,7 @@
     <!--http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css-->
     <!-- Custom styles for this template -->
     <link href="/static/css/main2.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
   </head>
 
   <body onload="startTime()">
@@ -36,27 +37,27 @@
         <!-- Modal -->
         <div class="todo first">
             <div>
-                <li>交报告</li>
+                <li>{{ todolist0 }}</li>
             </div>
-            <span>截至日期：<a>2018年6月5日12时39分</a></span>
+            <span>截止日期：<a>{{ time0 }}</a></span>
         </div>
         <div class="todo second">
             <div>
-                <li>完成PPT</li>
+                <li>{{ todolist1 }}</li>
             </div>
-            <span>截至日期：<a>2018年6月5日12时39分</a></span>
+            <span>截止日期：<a>{{ time1 }}</a></span>
         </div>
         <div class="todo third">
             <div>
-                <li>看机器学习</li>
+                <li>{{ todolist2 }}</li>
             </div>
-            <span>截至日期：<a>2018年6月5日12时39分</a></span>
+            <span>截止日期：<a>{{ time2 }}</a></span>
         </div>
         <div class="todo forth">
             <div>
-                <li>整理资料</li>
+                <li>{{ todolist3 }}</li>
             </div>
-            <span>截至日期：<a>2018年6月5日12时39分</a></span>
+            <span>截止日期：<a>{{ time3 }}</a></span>
         </div>
         <!-- 跳出的菜单选择框 -->
         <div class="modal fade" id="chooseMenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -68,8 +69,8 @@
         </button>
               </div>
               <div class="modal-body">
-                <li class="iconfont" style="cursor: pointer;float: left;margin-left: 100px;list-style: none" data-toggle="modal" data-target="#addTodo">&#xe6fa;</li>
-                <li class="iconfont" style="cursor: pointer;float: right;margin-right: 100px;list-style: none" data-toggle="modal" data-target="#exampleModalLong">&#xe6fc;</li>
+                <li class="iconfont" style="cursor: pointer;float: left;margin-left: 100px;list-style: none" data-toggle="modal" data-target="#addTodo" data-dismiss="modal">&#xe6fa;</li>
+                <li class="iconfont" style="cursor: pointer;float: right;margin-right: 100px;list-style: none" data-toggle="modal" data-target="#exampleModalLong" data-dismiss="modal">&#xe6fc;</li>
               </div>
             </div>
           </div>
@@ -77,7 +78,7 @@
           <!-- 增加todo时跳出的框 -->
         <div class="modal fade" id="addTodo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
-            <div class="modal-content">
+            <form class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">我的ToDo</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -85,13 +86,16 @@
                 </button>
               </div>
               <div class="modal-body">
-                <input class="input_Todo" placeholder="添加你的ToDo" style="width: 100%;border-style: none">
+                <input id="myInput" placeholder="添加你的ToDo" style="width: 100%;height:20px;border-style: none">
               </div>
+              <div class="calendarWarp">
+                  <a>截止日期</a><input type="text" name="time" class='ECalendar' id="ECalendar_case2" style="width: 200px;"  value="2018-06-06 06:06"/>
+	          </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="save_todo()">走你</button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
@@ -102,7 +106,7 @@
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">记点什么</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true"><li class="iconfont" style="color: #0f0f0f;list-style: none;font-size: 20px;">&#xe6b9;</li></span>
+                  <span aria-hidden="true"><li style="list-style: none">&times;</li></span>
                 </button>
               </div>
               <div class="modal-body">
@@ -120,7 +124,7 @@
   </div>
   <div id="foot">
           <div class="foot_menu">
-              <span class="side_logo" style="cursor:pointer;float: left;font-size: 40px" onclick="openNav()"><li class="iconfont" style="list-style: none;">&#xe696;</li></span>
+              <span class="side_logo" style="cursor:pointer;float: left;font-size: 40px" onclick="OpenOrClose()"><li class="iconfont" style="list-style: none;">&#xe696;</li></span>
               <li style="cursor: pointer;list-style: none;float: right;font-size: 45px;position: relative" class="iconfont" data-toggle="modal" data-target="#chooseMenu">&#xe699;</li>
           </div>
   </div>
@@ -135,5 +139,19 @@
     <!--<script src='/static/js/sql.js'></script>-->
     <script src="/static/js/main2.js"></script>
     <script src="/static/js/time.js"></script>
+    <script src="/static/js/Ecalendar.jquery.min.js"></script>
+      <script type="text/javascript">
+        $(function(){
+            $("#ECalendar_case2").ECalendar({
+                 type:"time",   //模式，time: 带时间选择; date: 不带时间选择;
+                 stamp : true,   //是否转成时间戳，默认true;
+                 offset:[0,2],   //弹框手动偏移量;
+                 format:"yyyy年mm月dd日hh时ii分",   //时间格式 默认 yyyy-mm-dd hh:ii;
+                 skin:3,   //皮肤颜色，默认随机，可选值：0-8,或者直接标注颜色值;
+                 step:10,   //选择时间分钟的精确度;
+                 callback:function(v,e){} //回调函数
+            });
+        })
+    </script>
   </body>
 </html>

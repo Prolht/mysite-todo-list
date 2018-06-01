@@ -24,7 +24,6 @@ from django.views.static import serve
 urlpatterns = [
     # 基于函数 的 View 映射 URL 方法
     #path('register/',RegisterView.as_view(),name='register'),
-    url(r'^main2/', views.main2),
     url(r'^admin/', admin.site.urls),
     url(r'^login/$', LoginView.as_view(),name='login'),
     url(r'^register/$',RegisterView.as_view(),name='register'),
