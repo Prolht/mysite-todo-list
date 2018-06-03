@@ -11,7 +11,7 @@ from django.urls import reverse
 from django.http import HttpResponse,HttpResponsePermanentRedirect,HttpResponseRedirect
 from django.forms.models import model_to_dict
 import re
-
+from datetime import datetime
 
 #业务处理逻辑的编写
 #自定义用户验证函数，实现邮箱或用户名都能登陆
@@ -93,13 +93,15 @@ class IndexView(View):
 class MainView(View):
     def get(self,request):
         user_email = UserProfile.objects.get(username=request.user)  #注意打印出的是用户名
+        user_memo = user_email.memo
         todo_query = UserTodo.objects.filter(user_email=user_email,done=False)
         todo_query = todo_query.order_by("deadline") #按照截至日期按照从小到大的顺序进行筛选
         # todo_query = todo_query.order_by("-deadline")  按照截至日期按照从大到小的顺序进行筛选
         todo_dict = todo_query.values("ToDolist").values("ToDolist")
         todo_list = []
-        for todo in todo_dict[0:5]:
+        for todo in todo_dict:
             todo_list.append(todo["ToDolist"])
+            '''
         time_dict = todo_query.values("deadline").values("deadline")
         time_list = []
         for time in time_dict[0:5]:
@@ -108,10 +110,11 @@ class MainView(View):
             buff_time = re.findall(pat,buff_time)
             buff_time = buff_time[0]+'年'+buff_time[1]+'月'+buff_time[2]+'日'+buff_time[3]+'时'+buff_time[4]+'分'
             time_list.append(buff_time)
-        para_todo = {'todolist0':todo_list[0],'todolist1':todo_list[1],'todolist2':todo_list[2],'todolist3':todo_list[3]}
-        para_time = {'time0':time_list[0],'time1':time_list[1],'time2':time_list[2],'time3':time_list[3]}
-        para = dict(para_todo,**para_time) #将两个字典连接到一块
-        return render(request, 'main2.html',para)
+            '''
+        para = {'todo_list':todo_list,'memo':user_memo}
+        #para_time = {'time0':time_list[0],'time1':time_list[1],'time2':time_list[2],'time3':time_list[3],'memo':user_memo}
+        #para = dict(para_todo,**para_time) #将两个字典连接到一块
+        return render(request,'main2.html',para)
     def post(self,request):
         psss
         return render(request, 'main2.html')
@@ -135,27 +138,19 @@ def page_not_found(request):
 
 
 #将用户添加的todo保存到数据库中,加装饰符为了防止csrf对其进行拦截
-
 @csrf_exempt
-def save_info(request):
+def save_todo(request):
     if request.method == 'POST':
         user_email = UserProfile.objects.get(username=request.user)
         memo = ''
         done = False
-        todo = 'dddd'
         try:
             todo = request.POST.get('todo')#获取从后端返回的数据
-            datetime = str(request.POST.get('datetime'))
-            datetime = datetime.replace('年','-')
-            datetime = datetime.replace('月', '-')
-            datetime = datetime.replace('日', ' ')
-            datetime = datetime.replace('时', ':')
-            datetime = datetime.replace('分', '')
             if todo is not None:
-                user_todo = UserTodo(ToDolist=todo,deadline=datetime,done=done,memo=memo, user_email=user_email)
+                user_todo = UserTodo(ToDolist=todo,done=done,user_email=user_email,deadline=datetime.now())
                 user_todo.save()
         except Exception as e:
-            pass
+            print(e)
 
 
 #用户点击右侧的X号，对todo进行隐藏 暂且不用
@@ -163,13 +158,27 @@ def save_info(request):
 def save_hide_todo(request):
     if request.method == 'POST':
         user_email = UserProfile.objects.get(username=request.user) #获取当前登陆用户的todo id
-        print(user_email)
+        time_query = UserTodo.objects.filter(user_email=user_email, done=False)
+        time_query = time_query.order_by("deadline")  # 按照截至日期按照从小到大的顺序进行筛选
+        time_dict = time_query.values("deadline").values("deadline")
         try:
-            done = request.POST.get('done')
-            id = int(request.POST.get('id'))+1  #数据库中的id从1开始
-            User = UserTodo.objects.filter(user_email=user_email)
-            User = User.get(id=id)
+            id = int(request.POST.get('id'))
+            time_index = time_dict[id]['deadline'] #获取用户点击隐藏的那一条的deadline,一般来讲用户的deadline是不可能有重复的
+            User = UserTodo.objects.get(user_email=user_email,deadline=time_index)
+            #User = User.filter(deadline=time_index)
             User.done = True
             User.save()
+        except Exception as e:
+            print(e)
+
+#将用户添加的todo保存到数据库中,加装饰符为了防止csrf对其进行拦截
+@csrf_exempt
+def save_memo(request):
+    if request.method == 'POST':
+        try:
+            memo = request.POST.get('memo')#获取从后端返回的数据
+            user_profile = UserProfile.objects.get(username=request.user)
+            user_profile.memo = memo
+            user_profile.save()
         except Exception as e:
             print(e)

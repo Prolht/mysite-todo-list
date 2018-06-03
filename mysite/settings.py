@@ -36,6 +36,7 @@ AUTHENTICATION_BACKENDS = ('app.views.MyBackend',)
 
 # UserProfile 覆盖了 django 内置的 user 表
 AUTH_USER_MODEL = 'app.UserProfile'
+LOGIN_URL = '/login/'  # 根据你网站的实际登陆地址来设置
 
 # Application definition
 

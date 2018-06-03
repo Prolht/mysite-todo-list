@@ -9,6 +9,7 @@ body {
     -o-background-size: cover;
 	background-repeat: no-repeat;
     background-position: center 0;
+    width: 100%;
 }
 
 .sidenav {
@@ -69,29 +70,26 @@ body {
     decoration: none;
 }
 
+#main{
+    width: 100%;
+}
 .side_clock{
+    float: left;
     width: 180px;
     height:800px;
     left: 10px;
     top:10px;
     position: absolute;
 }
-.center_todo{
-    height: 800px;
-    margin:0 310px 0 200px;
-    width: 1000px;
+.right_memo{
+    position: relative;
+    height: 500px;
+    width: 600px;
+    float: right;
     text-align: right;
     overflow: hidden;
 }
 
-.right_memo{
-    right: 10px;
-    top: 10px;
-    width: 100px;
-    height: 800px;
-    position: absolute;
-    text-align: center;
-}
 #clock_date{
     font-size: 35px;
     color: white;
@@ -139,56 +137,49 @@ body {
 
 
 
-/*以下区域控制中间todo的显示*/
-.todo{
-    height: 120px;
-}
-.todo span{
-    margin-top: 20px;
-}
-
-.todo li{
+/*以下区域控制右边todo的显示*/
+.todo_table{
+    height: 500px;
+    width: 580px;
     overflow: hidden;
-    list-style: none;
+}
+/* color on hover */
+.todo_table ul li:hover {
+  color: #dd747b;
+}
+.todo_table ul{
+    overflow: hidden;
 }
 
-.first span{
+/* Style the close button */
+.close  {
+    position: absolute;
+    line-height: 15px;
+    padding: 8px 8px 8px 8px;
     color: white;
+}
+.close:hover{
+    color: #dd747b;
 }
 
-.second span{
-    color: #A4D3EE;
-}
-.third span{
-    color: #96CDCD;
-}
-.forth span{
-    color: #778899 ;
-}
-.first li{
-    height: 70px;
-    margin-top: 20px;
-    font-size: 55px;
+/* Style the list items */
+.todo_table ul li {
+    right: 10px;
+    text-align: left;
+    list-style: initial;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: 0.2s;
     color: white;
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
-.second li{
-    height: 55px;
-    margin-top: 20px;
-    font-size: 40px;
-    color: #A4D3EE;
-}
-.third li{
-    height: 45px;
-    margin-top: 20px;
-    font-size: 30px;
-    color: #96CDCD;
-}
-.forth li{
-    height: 35px;
-    margin-top: 20px;
-    font-size: 25px;
-    color: #778899 ;
-}
+
+
 /*阿里的图标*/
 @font-face {
   font-family: 'iconfont';  /* project id 688321 */

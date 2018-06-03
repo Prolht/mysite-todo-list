@@ -67,8 +67,7 @@ for (i = 0; i < close.length; i++) {
     (function(i){
       close[i].onclick = function()
       {
-        var div = this.parentElement;
-        hide_ele(div)
+        this.parentElement.style.display = "none";
         console.log(i)
         save_hide_todo(i)
         };

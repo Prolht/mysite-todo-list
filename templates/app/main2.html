@@ -19,47 +19,33 @@
     <link href="/static/css/style.css" rel="stylesheet">
   </head>
 
-  <body onload="startTime()">
+  <body onload="open_page()">
+  <!-- 侧边划出菜单-->
   <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       <img src="/static/images/main_page/user_female.jpeg" class="img-thumbnail" id="user_img">
       <a href="#">设置</a>
-      <a href="#">退出</a>
+      <a href="{% url 'logout1' %}">退出</a>
       <a href="#">反馈</a>
       <button type="button" class="btn btn-outline-light" type="submit" id="find">查找</button>
 </div>
-  <div id="main">s
+  <div id="main">
       <div class="side_clock">
           <span id="clock_date"></span><br>
           <span id="clock_time"></span>
       </div>
-      <div class="center_todo">
-        <!-- Modal -->
-        <div class="todo first">
-            <div>
-                <li>{{ todolist0 }}</li>
-            </div>
-            <span>截止日期：<a>{{ time0 }}</a></span>
-        </div>
-        <div class="todo second">
-            <div>
-                <li>{{ todolist1 }}</li>
-            </div>
-            <span>截止日期：<a>{{ time1 }}</a></span>
-        </div>
-        <div class="todo third">
-            <div>
-                <li>{{ todolist2 }}</li>
-            </div>
-            <span>截止日期：<a>{{ time2 }}</a></span>
-        </div>
-        <div class="todo forth">
-            <div>
-                <li>{{ todolist3 }}</li>
-            </div>
-            <span>截止日期：<a>{{ time3 }}</a></span>
-        </div>
-        <!-- 跳出的菜单选择框 -->
+
+      <div class="right_memo">
+           <!-- 显示todo -->
+          <form class="todo_table">
+            <ul id="myUL">
+                {% for todo in todo_list %}
+                <li><span>{{ todo }}</span></li>
+                {% endfor %}
+            </ul>
+          </form>
+       <!--相关网页的操作-->
+          <!-- 跳出的菜单选择框 -->
         <div class="modal fade" id="chooseMenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content"  style="background-color: #424242">
@@ -75,10 +61,10 @@
             </div>
           </div>
         </div>
-          <!-- 增加todo时跳出的框 -->
+          <!-- 增加todo -->
         <div class="modal fade" id="addTodo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
-            <form class="modal-content">
+            <form class="modal-content" id="todo_table">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">我的ToDo</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -86,23 +72,24 @@
                 </button>
               </div>
               <div class="modal-body">
-                <input id="myInput" placeholder="添加你的ToDo" style="width: 100%;height:20px;border-style: none">
+                <input id="myInput" placeholder="添加你的ToDo" style="width: 100%;height:20px;border-style: none" autofocus>
               </div>
+              <!--
               <div class="calendarWarp">
                   <a>截止日期</a><input type="text" name="time" class='ECalendar' id="ECalendar_case2" style="width: 200px;"  value="2018-06-06 06:06"/>
 	          </div>
+	          -->
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" onclick="save_todo()">走你</button>
+                <button type="button" class="btn btn-primary" onclick="newElement()" data-dismiss="modal">走你</button>
               </div>
             </form>
           </div>
         </div>
-      </div>
-      <div class="right_memo">
-          <div id="exampleModalLong" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" style="display: none;" aria-hidden="true">
+          <!-- 增加memo -->
+        <div id="exampleModalLong" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" style="display: none;" aria-hidden="true">
           <div class="modal-dialog" role="textbox">
-            <div class="modal-content">
+            <form class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">记点什么</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -110,17 +97,16 @@
                 </button>
               </div>
               <div class="modal-body">
-                <textarea placeholder="添加便签" aria-hidden="true" style="width: 100%;height: 300px;border-style: none"></textarea>
+                <textarea id="memo" placeholder="添加便签" aria-hidden="true" style="width: 100%;height: 300px;border-style: none">{{ memo }}</textarea>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary">保存</button>
+                <button type="button" class="btn btn-primary" onclick="save_memo()" data-dismiss="modal">走你</button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
-
   </div>
   <div id="foot">
           <div class="foot_menu">

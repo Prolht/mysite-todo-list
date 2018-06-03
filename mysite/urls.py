@@ -30,8 +30,8 @@ urlpatterns = [
     url(r'^main/$',MainView.as_view(),name='main'),
     url(r'^person_info/$',Person_info.as_view(),name='person_info'),
     url(r'^logout/',LogoutView.as_view(),name='logout1'),
-    url(r'^save_info/$',views.save_info),
-
+    url(r'^save_todo/$',views.save_todo),
+    url(r'^save_memo/$',views.save_memo),
     url(r'^save_hide_todo/$',views.save_hide_todo),
     url(r'^$',IndexView.as_view(),name='index'),
 ]
