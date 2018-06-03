@@ -136,6 +136,13 @@ def page_not_found(request):
     response.status_code = 404
     return response
 
+#全局500 函数
+def page_error(request):
+    from django.shortcuts import render_to_response
+    response = render_to_response('500.html', {})
+    response.status_code = 500
+    return response
+
 
 #将用户添加的todo保存到数据库中,加装饰符为了防止csrf对其进行拦截
 @csrf_exempt

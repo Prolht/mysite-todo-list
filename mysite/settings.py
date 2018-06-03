@@ -27,9 +27,9 @@ sys.path.insert(0,os.path.join(BASE_DIR,'app'))
 SECRET_KEY = 'e_qoj2(_n1rou7narprwg-j6u!1j%&)yf$uzkbhpvcq9ga$ly1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost ','.lex-lht.com']
 
 # AUTH 方法（支持邮箱登录）
 AUTHENTICATION_BACKENDS = ('app.views.MyBackend',)
@@ -136,3 +136,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'static'),
         ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

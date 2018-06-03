@@ -1,6 +1,19 @@
-.img_404{
-    margin: auto;
+body {
+    background: #ebebeb;
+    /**/
+}
+.main{
+    position:fixed;
+    left :10%;
+    top:10%;
+}
+
+.text{
+    color: #383bff;
+    position: fixed;
+    font-size: 50px;
+    top: 20%;
 }
 .span_text{
-    margin: auto;
+    font-size: 30px;
 }

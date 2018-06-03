@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^save_memo/$',views.save_memo),
     url(r'^save_hide_todo/$',views.save_hide_todo),
     url(r'^$',IndexView.as_view(),name='index'),
+    url(r'^page_not_found',views.page_not_found),
 ]
 # 全局 404 页面配置（django 会自动调用这个变量）
 handler404 = 'app.views.page_not_found'
