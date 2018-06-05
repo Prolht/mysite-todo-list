@@ -16,7 +16,7 @@ Including another URLconf
 from app.views import RegisterView,LoginView,LogoutView,IndexView,MainView,Person_info
 from django.contrib import admin
 from django.conf.urls import url
-from app import testdb,views
+from app import views
 import app
 from django.conf import settings
 from django.views.static import serve

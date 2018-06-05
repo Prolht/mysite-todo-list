@@ -24,9 +24,6 @@ class MyBackend(ModelBackend):
         except Exception as e:
             return None
 # Create your views here.
-#表单
-
-
 #用户注册
 class RegisterView(View):
     def get(self,request):
