@@ -29,7 +29,7 @@ SECRET_KEY = 'e_qoj2(_n1rou7narprwg-j6u!1j%&)yf$uzkbhpvcq9ga$ly1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost ','.lex-lht.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost ','.lex-lht.online']
 
 # AUTH 方法（支持邮箱登录）
 AUTHENTICATION_BACKENDS = ('app.views.MyBackend',)
