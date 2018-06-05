@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from datetime import datetime
-from django.utils import timezone
 #导入AbstractUser
 # Create your models here.
 class UserProfile(AbstractUser):
@@ -17,7 +16,7 @@ class UserProfile(AbstractUser):
 
 class UserTodo(models.Model):
     #user_index = models.DateTimeField(default=0,verbose_name="用户todo索引")
-    deadline = models.DateTimeField(default=timezone.now(),verbose_name='截至时间')
+    deadline = models.DateTimeField(default=datetime.now(),verbose_name='截至时间')
     user_email = models.ForeignKey(UserProfile,on_delete=models.CASCADE)  #设置外键，关联到UserProfile表
     # models.CASCADE表示若删除用户，则用户下的所有UserTodo也会被删除
     ToDolist = models.CharField(max_length=255,verbose_name='todo')
