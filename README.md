@@ -1,6 +1,6 @@
 # Python+Django+SQLite 制作TO-DO list
 
-标签（空格分隔）： Python Django SQLite
+Python Django SQLite
 
 ---
 ## **ToDo List**
