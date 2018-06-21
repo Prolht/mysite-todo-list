@@ -18,5 +18,3 @@ Python Django SQLite
 **环境**
 > * Django 2.0.6
 > * SQLite(Django内置）
-
-**主要功能的简介**
