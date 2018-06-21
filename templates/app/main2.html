@@ -22,12 +22,12 @@
   <body onload="open_page()">
     <!-- 侧边划出菜单-->
     <div id="mySidenav" class="sidenav">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <!--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>-->
       <img src="/static/images/main_page/user_female.jpeg" class="img-thumbnail" id="user_img">
-      <a href="#">设置</a>
-      <a href="{% url 'logout1' %}">退出</a>
-      <a href="#">反馈</a>
-      <button type="button" class="btn btn-outline-light" type="submit" id="find">查找</button>
+      <a href="{% url 'not_open' %}">设置</a>
+      <a href="{% url 'logout' %}">退出</a>
+      <a href="https://github.com/Prolht/mysite-todo-list">反馈</a>
+      <button type="button" class="btn btn-outline-light" type="submit" id="find" onclick="{% url 'not_open' %}">查找</button>
     </div>
     <div id="main">
       <div class="side_clock">
@@ -35,23 +35,25 @@
           <span id="clock_time"></span>
       </div>
       <div class="right_memo">
-           <!-- 显示todo -->
-          <form class="todo_table">
+        <!-- 显示todo -->
+        <form class="todo_table">
             <ul id="myUL">
                 {% for todo in todo_list %}
                 <li><span>{{ todo }}</span></li>
                 {% endfor %}
             </ul>
           </form>
-       <!--相关网页的操作-->
-          <!-- 跳出的菜单选择框 -->
+        <!--相关网页的操作-->
+        <!-- 跳出的菜单选择框 -->
         <div class="modal fade" id="chooseMenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content"  style="background-color: #424242">
+            <div class="modal-content"  style="background-color: #4169E1">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle" style="color: white">新增To Do？还是便签？</h5>
-                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white"><span aria-hidden="true">&times;</span>
-        </button>
+                 <!--
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white"><span aria-hidden="true">&times;</span>
+                 </button>
+                 -->
               </div>
               <div class="modal-body">
                 <li class="iconfont" style="cursor: pointer;float: left;margin-left: 100px;list-style: none" data-toggle="modal" data-target="#addTodo" data-dismiss="modal">&#xe6fa;</li>

@@ -29,12 +29,13 @@ urlpatterns = [
     url(r'^register/$',RegisterView.as_view(),name='register'),
     url(r'^main/$',MainView.as_view(),name='main'),
     url(r'^person_info/$',Person_info.as_view(),name='person_info'),
-    url(r'^logout/',LogoutView.as_view(),name='logout1'),
+    url(r'^logout/',LogoutView.as_view(),name='logout'),
     url(r'^save_todo/$',views.save_todo),
     url(r'^save_memo/$',views.save_memo),
     url(r'^save_hide_todo/$',views.save_hide_todo),
     url(r'^$',IndexView.as_view(),name='index'),
     url(r'^page_not_found',views.page_not_found),
+    url(r'^not_open', views.not_open,name='not_open'),
 ]
 # 全局 404 页面配置（django 会自动调用这个变量）
 handler404 = 'app.views.page_not_found'

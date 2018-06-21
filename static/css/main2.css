@@ -15,7 +15,8 @@ body {
 }
 
 .sidenav {
-    height: 95%;
+
+    height: 100%;
     width: 0;
     position: fixed;
     z-index: 1;
@@ -29,18 +30,29 @@ body {
 
 
 .sidenav a {
-    padding: 8px 8px 4px 16px;
+    top: 20px;
+    position: relative;
+    padding: 16px 8px 4px 16px;
     text-decoration: none;
     font-size: 20px;
-    color: #818181;
+    color: #ffffff;
     display: block;
     transition: 0.3s;
 }
 
 .sidenav a:hover, .offcanvas a:focus{
-    color: #f1f1f1;
+    color: #d7d4f1;
 }
-
+#user_img{
+    top:50px;
+    position: absolute;
+    padding: 0 0 0 0;
+}
+#find{
+    margin-left: 8px;
+    bottom: 15px;!important;
+    position: absolute;
+}
 .sidenav .closebtn {
     position: absolute;
     top: 0;
@@ -105,16 +117,7 @@ body {
     color: white;
 }
 
-#user_img{
-    top:50px;
-    position: absolute;
-    margin-bottom:20px;
-}
-#find{
-    margin-left: 8px;
-    bottom: 15px;!important;
-    position: absolute;
-}
+
 #foot{
     bottom: 40px;
     height: 80px;

@@ -2,7 +2,7 @@ from django.db.models import Q
 from django.contrib.auth.backends import ModelBackend
 from django.shortcuts import render
 from django.views.generic.base import View
-from .models import UserProfile,UserTodo
+from .models import UserProfile,UserTodo,UserMessage
 from .forms import RegisterForm,LoginForm
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.hashers import make_password
@@ -12,9 +12,10 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.forms.models import model_to_dict
 import re
 from datetime import datetime
-
+# Create your views here.
 
 #业务处理逻辑的编写
+
 #自定义用户验证函数，实现邮箱或用户名都能登陆
 class MyBackend(ModelBackend):
     def authenticate(self,username=None,password=None,**kwargs):
@@ -24,7 +25,7 @@ class MyBackend(ModelBackend):
                 return user
         except Exception as e:
             return None
-# Create your views here.
+
 #用户注册
 class RegisterView(View):
     def get(self,request):
@@ -47,19 +48,9 @@ class RegisterView(View):
             user_profile.password = make_password(password)
             user_profile.is_active = True #判断用户是否激活
             user_profile.save()
-
-            #注册完成发送一条消息
-            user_message = UserMessage()
-            user_message.user = user_profile.id
-            user_message.message = '欢迎注册慕学在线网！'
-            user_message.save()
-
-            send_register_email(email, 'register')
-            return render(request, 'send_success.html')
             return render(request,'success.html')
-        else:
-            print(register_form)
         return render(request,'register.html',{'register_form':register_form})
+
 
 #用户登陆
 class LoginView(View):
@@ -78,9 +69,6 @@ class LoginView(View):
                     login(request, user)
                     return HttpResponseRedirect(reverse('main'))
             return render(request, 'login.html', {'msg': '用户名或密码错误!'})
-        else:
-            print(login_form)
-        print(login_form.errors)
         return render(request,'login.html',{'msg':'用户名或密码错误!'})
 
 #用户退出登陆
@@ -111,9 +99,9 @@ class MainView(View):
         #para = dict(para_todo,**para_time) #将两个字典连接到一块
         return render(request,'main2.html',para)
     def post(self,request):
-        psss
         return render(request, 'main2.html')
 
+#用户自己更改信息，此功能未完善
 class Person_info(View):
     def get(self,request):
         return render(request,'person_info.html')
@@ -124,6 +112,11 @@ class Person_info(View):
         :return:
         '''
         pass
+
+#用于提示该功能还未开放的界面
+def not_open(request):
+    return render(request,'not_open.html')
+
 #全局404 函数
 def page_not_found(request):
     from django.shortcuts import render_to_response
@@ -156,7 +149,7 @@ def save_todo(request):
             print(e)
 
 
-#用户点击右侧的X号，对todo进行隐藏 暂且不用
+#用户点击右侧的X号，对todo进行隐藏
 @csrf_exempt
 def save_hide_todo(request):
     if request.method == 'POST':
@@ -177,7 +170,7 @@ def save_hide_todo(request):
         except Exception as e:
             print(e)
 
-#将用户添加的todo保存到数据库中,加装饰符为了防止csrf对其进行拦截
+#将用户添加的memo保存到数据库中,加装饰符为了防止csrf对其进行拦截
 @csrf_exempt
 def save_memo(request):
     if request.method == 'POST':

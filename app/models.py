@@ -37,6 +37,8 @@ class EmailVerifyRecord(models.Model):
     class Meta:
         verbose_name = '邮箱验证码'
         verbose_name_plural = '邮箱验证码'
+
+#当启用邮件系统时用到下面的models
 class UserMessage(models.Model):
     # 如果 为 0 代表全局消息，否则就是用户的 ID
     user = models.IntegerField(default=0, verbose_name='接受用户')
