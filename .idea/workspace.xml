@@ -2,46 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28394d2c-c5f0-4438-802d-d05f68486653" name="Default" comment="主要页面完成构建，接下来对细节进行完善">
-      <change afterPath="$PROJECT_DIR$/app/code_img.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/mysite.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mysite.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/main2.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/main_page/background.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/main_page/main_page.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/main_page/memo.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/main_page/写文章-CSDN博客.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/main_page/写文章-CSDN博客_files/3_lht_521.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/main_page/写文章-CSDN博客_files/commons.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/main_page/写文章-CSDN博客_files/commons.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/main_page/写文章-CSDN博客_files/csdn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/main_page/写文章-CSDN博客_files/csdn_label.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/main_page/写文章-CSDN博客_files/editor.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/main_page/写文章-CSDN博客_files/editor.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/main_page/写文章-CSDN博客_files/first_guide-06c52b327b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/main_page/写文章-CSDN博客_files/hm.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/main_page/写文章-CSDN博客_files/jquery-version.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/main_page/写文章-CSDN博客_files/jquery.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/main_page/写文章-CSDN博客_files/main-1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/main_page/写文章-CSDN博客_files/postedit.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/main_page/写文章-CSDN博客_files/postedit_data/htmleditViews.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/main_page/写文章-CSDN博客_files/postedit_data/iframe.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/main_page/写文章-CSDN博客_files/posteditnew-1d8935999c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/main_page/写文章-CSDN博客_files/tingyun-rum-559c80716d.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/main_page/写文章-CSDN博客_files/tracking-1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/main_page/写文章-CSDN博客_files/ui.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/main_page/写文章-CSDN博客_files/xheditor-1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/main2.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/main2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/app/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/app/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/app/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/app/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/app/main2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/app/main2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/app/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/app/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/app/success.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/app/success.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todolist.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/todolist.sqlite3" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -496,12 +458,12 @@
       <window_info anchor="bottom" id="Python Console" order="3" weight="0.32868218" />
       <window_info anchor="bottom" id="Run" order="8" sideWeight="0.49853587" weight="0.30838323" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.31782946" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.8113772" visible="true" weight="0.22767204" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.6032934" visible="true" weight="0.22767204" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="2" />
       <window_info anchor="right" id="SciView" order="0" weight="0.32980332" />
       <window_info id="Structure" order="2" sideWeight="0.19679634" side_tool="true" weight="0.17170954" />
-      <window_info id="Favorites" order="0" sideWeight="0.18862276" side_tool="true" visible="true" weight="0.22767204" />
+      <window_info id="Favorites" order="0" sideWeight="0.39670658" side_tool="true" visible="true" weight="0.22767204" />
       <window_info anchor="bottom" id="Debug" order="9" weight="0.3984496" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
