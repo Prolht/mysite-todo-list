@@ -1,6 +1,7 @@
 # Python+Django+SQLite 制作TO-DO list
 
 Python Django SQLite
+[![Build Status]
 
 ---
 ## **ToDo List**
