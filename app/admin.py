@@ -1,11 +1,9 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 
 from .models import UserProfile,UserTodo
 
-class UserProfileAdmin(admin.ModelAdmin):
-    pass
-
 
 # Register your models here.
-admin.site.register(UserProfile,UserProfileAdmin)
+admin.site.register(UserProfile,UserAdmin)#用UserAdmin去注册UserProfile
 admin.site.register(UserTodo)

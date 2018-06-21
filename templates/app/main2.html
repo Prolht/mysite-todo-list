@@ -20,21 +20,20 @@
   </head>
 
   <body onload="open_page()">
-  <!-- 侧边划出菜单-->
-  <div id="mySidenav" class="sidenav">
+    <!-- 侧边划出菜单-->
+    <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       <img src="/static/images/main_page/user_female.jpeg" class="img-thumbnail" id="user_img">
       <a href="#">设置</a>
       <a href="{% url 'logout1' %}">退出</a>
       <a href="#">反馈</a>
       <button type="button" class="btn btn-outline-light" type="submit" id="find">查找</button>
-</div>
-  <div id="main">
+    </div>
+    <div id="main">
       <div class="side_clock">
           <span id="clock_date"></span><br>
           <span id="clock_time"></span>
       </div>
-
       <div class="right_memo">
            <!-- 显示todo -->
           <form class="todo_table">
@@ -74,11 +73,6 @@
               <div class="modal-body">
                 <input id="myInput" placeholder="添加你的ToDo" style="width: 100%;height:20px;border-style: none" autofocus>
               </div>
-              <!--
-              <div class="calendarWarp">
-                  <a>截止日期</a><input type="text" name="time" class='ECalendar' id="ECalendar_case2" style="width: 200px;"  value="2018-06-06 06:06"/>
-	          </div>
-	          -->
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
                 <button type="button" class="btn btn-primary" onclick="newElement()" data-dismiss="modal">走你</button>
@@ -107,13 +101,13 @@
           </div>
         </div>
       </div>
-  </div>
-  <div id="foot">
+    </div>
+    <div id="foot">
           <div class="foot_menu">
               <span class="side_logo" style="cursor:pointer;float: left;font-size: 40px" onclick="OpenOrClose()"><li class="iconfont" style="list-style: none;">&#xe696;</li></span>
               <li style="cursor: pointer;list-style: none;float: right;font-size: 45px;position: relative" class="iconfont" data-toggle="modal" data-target="#chooseMenu">&#xe699;</li>
           </div>
-  </div>
+    </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

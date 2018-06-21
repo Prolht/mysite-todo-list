@@ -27,16 +27,19 @@ sys.path.insert(0,os.path.join(BASE_DIR,'app'))
 SECRET_KEY = 'e_qoj2(_n1rou7narprwg-j6u!1j%&)yf$uzkbhpvcq9ga$ly1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost','.lex-lht.online']
+#调试模式
+DEBUG = True
+ALLOWED_HOSTS = []
+#生产模式
+#DEBUG = False
+#ALLOWED_HOSTS = ['127.0.0.1','localhost','.lex-lht.online','47.95.227.140']
 
 # AUTH 方法（支持邮箱登录）
 AUTHENTICATION_BACKENDS = ('app.views.MyBackend',)
 
 # UserProfile 覆盖了 django 内置的 user 表
 AUTH_USER_MODEL = 'app.UserProfile'
-LOGIN_URL = '/login/'  # 根据你网站的实际登陆地址来设置
+LOGIN_URL = '/login/'  # 根据你网站的实际登陆地址来设置（用在强制用户登陆）
 
 # Application definition
 
@@ -133,4 +136,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'static'),
+        ] #生产模式将其关闭
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static') #生产模式将其打开

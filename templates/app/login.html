@@ -19,11 +19,7 @@
   <body>
     <form class="form-signin" method="post">
       <div class="text-center mb-4">
-        <!--
-        <img class="mb-4" src="/static/images/main_page/logo_small.png" alt="" width="144" height="72">
-        -->
-        <h1 class="h3 mb-3 font-weight-normal">登陆 To Do list</h1>
-        <p><a href="/register/" class="register_label">马上戳我注册！</a></p>
+        <h1 class="h3 mb-3 font-weight-normal">登陆</h1>
       </div>
 
       <div class="form-label-group">
@@ -40,14 +36,16 @@
         <label class="mycheck_box">
           <a class="text-left text-white" href="/forget_pwd/">忘记密码？</a>
           <a class="msg">{{ msg }}</a>
-          <!--
-            <input type="checkbox" value="remember-me"> 记住我
-          -->
+          <a href="/register/" class="register_label">注册</a>
         </label>
       </div>
-
       <button class="btn btn-lg btn-primary btn-block" onclick="login()" type="submit">登陆</button>
         {% csrf_token %}
+      <div class="choose_login">
+         <span class="text_choose">选择其他的登陆方式</span>
+         <li class="li1 iconfont" style="font-size:33px;cursor: pointer;list-style: none;">&#xe654;</li>
+         <li class="li2 iconfont" style="cursor: pointer;list-style: none;">&#xe80e;</li>
+      </div>
     </form>
   </body>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

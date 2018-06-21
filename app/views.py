@@ -8,10 +8,11 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate,login,logout
 from django.urls import reverse
-from django.http import HttpResponse,HttpResponsePermanentRedirect,HttpResponseRedirect
+from django.http import HttpResponse,HttpResponseRedirect
 from django.forms.models import model_to_dict
 import re
 from datetime import datetime
+
 
 #业务处理逻辑的编写
 #自定义用户验证函数，实现邮箱或用户名都能登陆
@@ -47,7 +48,14 @@ class RegisterView(View):
             user_profile.is_active = True #判断用户是否激活
             user_profile.save()
 
-            #注册完成
+            #注册完成发送一条消息
+            user_message = UserMessage()
+            user_message.user = user_profile.id
+            user_message.message = '欢迎注册慕学在线网！'
+            user_message.save()
+
+            send_register_email(email, 'register')
+            return render(request, 'send_success.html')
             return render(request,'success.html')
         else:
             print(register_form)
@@ -98,16 +106,6 @@ class MainView(View):
         todo_list = []
         for todo in todo_dict:
             todo_list.append(todo["ToDolist"])
-            '''
-        time_dict = todo_query.values("deadline").values("deadline")
-        time_list = []
-        for time in time_dict[0:5]:
-            buff_time = str(time["deadline"])
-            pat = '[0-9]+'
-            buff_time = re.findall(pat,buff_time)
-            buff_time = buff_time[0]+'年'+buff_time[1]+'月'+buff_time[2]+'日'+buff_time[3]+'时'+buff_time[4]+'分'
-            time_list.append(buff_time)
-            '''
         para = {'todo_list':todo_list,'memo':user_memo}
         #para_time = {'time0':time_list[0],'time1':time_list[1],'time2':time_list[2],'time3':time_list[3],'memo':user_memo}
         #para = dict(para_todo,**para_time) #将两个字典连接到一块
@@ -146,6 +144,7 @@ def page_error(request):
 def save_todo(request):
     if request.method == 'POST':
         user_email = UserProfile.objects.get(username=request.user)
+        print(user_email)
         memo = ''
         done = False
         try:
@@ -164,7 +163,10 @@ def save_hide_todo(request):
         user_email = UserProfile.objects.get(username=request.user) #获取当前登陆用户的todo id
         time_query = UserTodo.objects.filter(user_email=user_email, done=False)
         time_query = time_query.order_by("deadline")  # 按照截至日期按照从小到大的顺序进行筛选
-        time_dict = time_query.values("deadline").values("deadline")
+        print(type(time_query))
+        time_dict = time_query.values("deadline")
+        print(type(time_dict))
+        print(time_dict)
         try:
             id = int(request.POST.get('id'))
             time_index = time_dict[id]['deadline'] #获取用户点击隐藏的那一条的deadline,一般来讲用户的deadline是不可能有重复的
