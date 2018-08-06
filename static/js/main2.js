@@ -25,7 +25,7 @@ function save_todo(){
   $.ajax({
       type:"post",
       url:"/save_todo/",
-      cache:false,
+      cache:false ,
       data:{
         'todo':$("#myInput").val(),
       },

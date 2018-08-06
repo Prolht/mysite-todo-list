@@ -9,7 +9,6 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate,login,logout
 from django.urls import reverse
 from django.http import HttpResponse,HttpResponseRedirect
-from django.forms.models import model_to_dict
 import re
 from datetime import datetime
 # Create your views here.
@@ -52,6 +51,7 @@ class RegisterView(View):
         return render(request,'register.html',{'register_form':register_form})
 
 
+
 #用户登陆
 class LoginView(View):
     def get(self,request):
@@ -77,6 +77,7 @@ class LogoutView(View):
         logout(request)
         return HttpResponseRedirect(reverse('index'))
 
+#用户打开网页首先显示的部分即index页面
 class IndexView(View):
     def get(self,request):
         return render(request, 'index.html')
