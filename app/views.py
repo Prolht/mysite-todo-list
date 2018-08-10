@@ -62,7 +62,7 @@ class LoginView(View):
             user_name = request.POST.get('username','')
             password = request.POST.get('password','')
             #与数据库中的用户进行比对
-            #上面已经地authenticate进行了重写 若成功则返回user
+            #上面已经对authenticate进行了重写 若成功则返回user
             user = authenticate(request,username=user_name,password=password)
             if user is not None:
                 if user.is_active:

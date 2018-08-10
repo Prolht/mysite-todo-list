@@ -39,6 +39,8 @@ urlpatterns = [
 ]
 # 全局 404 页面配置（django 会自动调用这个变量）
 handler404 = 'app.views.page_not_found'
+
+
 """
 if settings.DEBUG:
     # debug_toolbar 插件配置
